@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="AutoShop.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Seller.cpp" />
   </ItemGroup>

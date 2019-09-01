@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "AutoShop.h"
+#include "Functions.h"
 
 AutoShop::AutoShop(int size, Car(*gen)()): cars(size)
 {

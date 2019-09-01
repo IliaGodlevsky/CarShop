@@ -1,6 +1,7 @@
 #include <cstring>
 
 #include "Car.h"
+#include "Functions.h"
 
 Car::Car()
 {
@@ -27,7 +28,12 @@ std::istream& operator >> (std::istream& is, Car& car)
 {
 	std::cout << "Enter name: ";
 	is >> car.name;
-
+	std::cout << "Enter year: ";
+	car.year = input();
+	std::cout << "Enter power: ";
+	car.power = input();
+	std::cout << "Enter cost: ";
+	car.cost = input();
 }
 
 bool Car::operator==(const Car& first)const

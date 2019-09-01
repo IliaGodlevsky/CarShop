@@ -16,7 +16,6 @@ public:
 	bool customer_is_out()const;
 private:
 	void menu()const;
-	int input()const;
 	void sort();
 	void delivery();
 	void sell();
