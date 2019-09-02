@@ -33,7 +33,6 @@ public:
 	Seller();
 	bool operator()(const Car& first, const Car& second)const;
 	bool operator()(const Car& first)const;
-	void compare_option(int to_compare);
 private:
 	using Compare = bool(Seller::*)(const Car&, const Car&)const;
 	bool name_cmp(const Car& first, const Car& second)const;
@@ -46,7 +45,7 @@ private:
 	void search_request();
 private:
 	static const int OPTIONS = 5;
-	enum { NAME = 1, COST, YEAR, POWER, EQUAL };
+	enum { NAME = 1, POWER = 4 };
 	Compare compare[OPTIONS];
 	int to_compare;
 	Car to_search;
@@ -54,8 +53,8 @@ private:
 
 class AutoShop
 {
-public:
 	using RandomCar = Car(*)();
+public:
 	AutoShop(int size, RandomCar car);
 	void take_request();
 	void fulfill_request();
@@ -64,7 +63,7 @@ private:
 	void menu()const;
 	void show()const;
 	void sort();
-	void delivery();
+	void stock();
 	void sell();
 	void find();
 private:

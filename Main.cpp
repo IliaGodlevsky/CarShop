@@ -3,11 +3,10 @@
 
 #include <ctime>
 
-const int SHOP_SIZE = 10;
-
 int main()
 {
 	srand(unsigned(time(nullptr)));
+	const int SHOP_SIZE = 10;
 	AutoShop shop(SHOP_SIZE, rand_car);
 	while (!shop.customer_is_out())
 	{

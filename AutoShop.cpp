@@ -4,17 +4,12 @@
 #include "Functions.h"
 #include "Constants.h"
 
-Car::Car() : name("Car"), year(1900), cost(0), power(1)
-{
-	
-}
+Car::Car() : name("Car"), year(1900), cost(0), power(1) {}
 
 Car::Car(const std::string& name, int year,
 	int cost, int power) :
-	name(name), year(year), cost(cost), power(power)
-{
-
-}
+	name(name), year(year),
+	cost(cost), power(power) {}
 
 std::ostream& operator <<(std::ostream& os, const Car& car)
 {
@@ -87,11 +82,6 @@ bool Seller::equal(const Car& first, const Car& second)const
 	return first == second;
 }
 
-void Seller::compare_option(int to_compare)
-{
-	this->to_compare = to_compare;
-}
-
 void Seller::sort_menu()const
 {
 	std::cout << "1. By name   2. By cost\n";
@@ -115,7 +105,7 @@ AutoShop::AutoShop(int size, RandomCar car)
 		cars.end(), car);
 }
 
-void AutoShop::delivery()
+void AutoShop::stock()
 {
 	cars.push_back(defined_car());
 }
@@ -144,11 +134,11 @@ void AutoShop::fulfill_request()
 {
 	switch (request)
 	{
-	case ADD:	delivery(); break;
-	case POP:	sell();		break;
-	case SHOW:	show();		break;
-	case SORT:	sort();		break;
-	case FIND:	find();		break;
+	case ADD:  stock(); break;
+	case POP:  sell();	break;
+	case SHOW: show();	break;
+	case SORT: sort();	break;
+	case FIND: find();	break;
 	}
 	pause();
 }
