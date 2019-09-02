@@ -1,56 +1,74 @@
 #include <iostream>
-#include <ctime>
 
 #include "Functions.h"
 #include "Constants.h"
 
-int input(const char* msg, int up, int down)
+namespace shop
 {
-	int choice;
-	std::cout << msg;
-	std::cin >> choice;
-	while (err(choice, up, down))
+	int input(const char* msg,
+		int up, int down)
 	{
-		eatline();
+		int choice;
 		std::cout << msg;
 		std::cin >> choice;
+		while (err(choice, up, down))
+		{
+			eatline();
+			std::cout << msg;
+			std::cin >> choice;
+		}
+		eatline();
+		return int(choice);
 	}
-	eatline();
-	return int(choice);
-}
-void eatline()
-{
-	std::cin.clear();
-	while (!iscntrl(std::cin.get()))
-		continue;
-}
-bool err(int choice, int up, int down)
-{
-	return std::cin.fail() ||
-		choice > up || choice < down;
-}
-void pause(int seconds)
-{
-	clock_t start = clock();
-	while (clock() - start <
-		seconds* CLOCKS_PER_SEC)
-		continue;
-	system("pause");
-	system("cls");
-}
 
-Car rand_car()
-{
-	std::string name = names[rand() % TYPES];
-	int year = years[rand() % TYPES];
-	int cost = costs[rand() % TYPES];
-	int power = powers[rand() % TYPES];
-	return Car(name, year, cost, power);
-}
+	void eatline()
+	{
+		std::cin.clear();
+		while (!iscntrl(std::cin.get()))
+			continue;
+	}
 
-Car defined_car()
-{
-	Car temp;
-	std::cin >> temp;
-	return temp;
+	bool err(int choice,
+		int up, int down)
+	{
+		return std::cin.fail() ||
+			choice > up || choice < down;
+	}
+
+	void pause(clock_t seconds)
+	{
+		clock_t start = clock();
+		while (clock() - start <
+			seconds * CLOCKS_PER_SEC)
+			continue;
+		system("pause");
+		system("cls");
+	}
+
+	shop::Car rand_car()
+	{
+		std::string name = names[rand() % TYPES];
+		unsigned year = years[rand() % TYPES];
+		unsigned  cost = costs[rand() % TYPES];
+		unsigned  power = powers[rand() % TYPES];
+		return shop::Car(name, year, cost, power);
+	}
+
+	shop::Car defined_car()
+	{
+		shop::Car temp;
+		std::cin >> temp;
+		return temp;
+	}
+
+	void show_cars(std::ostream& os,
+		const std::vector<shop::Car>& cars)
+	{
+		unsigned i = 0;
+		for (auto& car : cars)
+		{
+			os << ++i << std::endl
+				<< car << std::endl;
+		}
+	}
 }

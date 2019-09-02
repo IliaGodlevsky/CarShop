@@ -1,16 +1,15 @@
 #include "AutoShop.h"
 #include "Functions.h"
-
-#include <ctime>
+#include "Constants.h"
 
 int main()
 {
-	srand(unsigned(time(nullptr)));
-	const int SHOP_SIZE = 10;
-	AutoShop shop(SHOP_SIZE, rand_car);
+	std::srand(unsigned(std::time(nullptr)));
+	shop::AutoShop shop(shop::SHOP_SIZE, shop::rand_car);
 	while (!shop.customer_is_out())
 	{
 		shop.take_request();
 		shop.fulfill_request();
 	}
+	shop.propose_catalog();
 }
