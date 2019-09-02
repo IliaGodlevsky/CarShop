@@ -49,8 +49,8 @@ namespace shop
 	{
 		std::string name = names[rand() % TYPES];
 		unsigned year = years[rand() % TYPES];
-		unsigned  cost = costs[rand() % TYPES];
-		unsigned  power = powers[rand() % TYPES];
+		unsigned cost = costs[rand() % TYPES];
+		unsigned power = powers[rand() % TYPES];
 		return shop::Car(name, year, cost, power);
 	}
 

@@ -5,8 +5,6 @@
 
 namespace shop
 {
-	const unsigned int SHOP_SIZE = 15;
-
 	const unsigned TYPES = 29;
 
 	const char* const names[TYPES] = { "Audi","Cadillac",
@@ -28,12 +26,12 @@ namespace shop
 
 	const unsigned powers[TYPES] = { 50,55,60,65,70,75,80,85,
 	90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,
-	165,170,175,180,185 };
+	165,170,175,180,185,190 };
 
 	enum Minmax {
-		MIN_YEAR = 1990, MAX_YEAR = 2019,
-		MIN_COST = 5000, MAX_COST = 25000,
-		MIN_POWER = 50, MAX_POWER = 150
+		MIN_YEAR = 1991, MAX_YEAR = 2019,
+		MIN_COST = 1000, MAX_COST = 1000000,
+		MIN_POWER = 50, MAX_POWER = 300
 	};
 
 	const char* const year_msg = "Enter year: ";
