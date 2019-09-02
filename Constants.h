@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef CONST_H_
+#define CONST_H_
+
 const int TYPES = 7;
 
 const char* const names[TYPES] = { "Lada","BMW","Geely","Opel","Shkoda","BELAZ","Wolkswagen" };
@@ -20,3 +23,5 @@ const char* const cost_msg = "Enter cost: ";
 const char* const sort_msg = "Choose sort rule: ";
 const char* const sell_msg = "Choose car number: ";
 const char* const request_msg = "Choose option (0 to quit): ";
+
+#endif
