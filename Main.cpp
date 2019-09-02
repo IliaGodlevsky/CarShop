@@ -1,6 +1,5 @@
 #include "AutoShop.h"
-#include "Seller.h"
-#include "Car.h"
+#include "Functions.h"
 
 #include <ctime>
 
