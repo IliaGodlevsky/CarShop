@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <fstream>
 
-#include "AutoShop.h"
 #include "Functions.h"
 #include "Constants.h"
 
@@ -25,14 +24,12 @@ namespace shop
 		return os;
 	}
 
-	std::istream& operator >> (std::istream& is, Car& car)
+	void Car::input_car()
 	{
-		std::cout << name_msg;
-		getline(is, car.name);
-		car.year = input(year_msg, MAX_YEAR, MIN_YEAR);
-		car.power = input(power_msg, MAX_POWER, MIN_POWER);
-		car.cost = input(cost_msg, MAX_COST, MIN_COST);
-		return is;
+		name = input(name_msg);
+		year = input(year_msg, MAX_YEAR, MIN_YEAR);
+		power = input(power_msg, MAX_POWER, MIN_POWER);
+		cost = input(cost_msg, MAX_COST, MIN_COST);
 	}
 
 	bool Car::operator==(const Car& first)const
@@ -85,7 +82,7 @@ namespace shop
 
 	bool Seller::operator()(const Car& first)const
 	{
-		return (this->*find[to_find - 1])(first, to_search);
+		return (this->*find[to_find - 1])(first, car_to_search);
 	}
 
 	bool Seller::equal(const Car& first, const Car& second)const
@@ -130,11 +127,11 @@ namespace shop
 	{
 		switch (to_find)
 		{
-		case NAME:  std::cout << name_msg; getline(std::cin, to_search.name); break;
-		case YEAR:  to_search.year = input(year_msg, MAX_YEAR, MIN_YEAR);	  break;
-		case COST:  to_search.cost = input(cost_msg, MAX_COST, MIN_COST);	  break;
-		case POWER: to_search.power = input(power_msg, MAX_POWER, MIN_POWER); break;
-		case EQUAL: std::cin >> to_search; break;
+		case NAME:  car_to_search.name = input(name_msg); break;
+		case YEAR:  car_to_search.year = input(year_msg, MAX_YEAR, MIN_YEAR); break;
+		case COST:  car_to_search.cost = input(cost_msg, MAX_COST, MIN_COST); break;
+		case POWER: car_to_search.power = input(power_msg, MAX_POWER, MIN_POWER); break;
+		case EQUAL: car_to_search.input_car(); break;
 		}
 	}
 
@@ -156,7 +153,7 @@ namespace shop
 	void AutoShop::sell()
 	{
 		show();
-		size_t to_sell = input(sell_msg, cars.size(), 1) - 1;
+		unsigned to_sell = input(sell_msg, cars.size(), 1U) - 1U;
 		cars.erase(cars.begin() + to_sell);
 	}
 
@@ -218,7 +215,8 @@ namespace shop
 
 	void AutoShop::propose_catalog()const
 	{
-		unsigned answer = input(calalog_answer, YES, NO);
+		unsigned answer = 
+			input(calalog_answer, YES, NO);
 		if (answer == YES)
 		{
 			std::ofstream fout(catalog);

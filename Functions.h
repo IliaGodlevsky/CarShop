@@ -10,15 +10,25 @@
 namespace shop
 {
 	shop::Car rand_car();
+
 	shop::Car defined_car();
-	int input(const char* msg,
-		int up, int down);
+
 	void eatline();
-	bool err(int choice,
-		int up, int down);
+
 	void pause(clock_t seconds = 0);
+
 	void show_cars(std::ostream& os,
 		const Park& cars);
-	void menu(const char* const menu[], size_t size);
+
+	void menu(const char* const menu[], 
+		size_t size);
+
+	unsigned input(const char* msg,
+		unsigned up, unsigned  down);
+
+	std::string input(const char* msg);
+
+	bool error(unsigned choice,
+		unsigned up, unsigned down);
 }
 #endif

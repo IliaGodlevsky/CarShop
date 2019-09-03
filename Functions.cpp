@@ -5,20 +5,42 @@
 
 namespace shop
 {
-	int input(const char* msg,
-		int up, int down)
+	unsigned input(const char* msg,
+		unsigned up, unsigned down)
 	{
-		int choice;
+		unsigned choice;
 		std::cout << msg;
 		std::cin >> choice;
-		while (err(choice, up, down))
+		while (error(choice, up, down))
 		{
 			eatline();
 			std::cout << msg;
 			std::cin >> choice;
 		}
 		eatline();
-		return int(choice);
+		return choice;
+	}
+
+	std::string input(const char* msg)
+	{
+		std::string choice;
+		std::cout << msg;
+		std::getline(std::cin, choice);
+		while (std::cin.fail())
+		{
+			eatline();
+			std::cout << msg;
+			std::getline(std::cin, choice);
+		}
+		eatline();
+		return choice;
+	}
+
+	bool error(unsigned choice,
+		unsigned up, unsigned down)
+	{
+		return std::cin.fail() ||
+			choice > up || choice < down;
 	}
 
 	void eatline()
@@ -26,13 +48,6 @@ namespace shop
 		std::cin.clear();
 		while (!iscntrl(std::cin.get()))
 			continue;
-	}
-
-	bool err(int choice,
-		int up, int down)
-	{
-		return std::cin.fail() ||
-			choice > up || choice < down;
 	}
 
 	void pause(clock_t seconds)
@@ -57,7 +72,7 @@ namespace shop
 	shop::Car defined_car()
 	{
 		shop::Car temp;
-		std::cin >> temp;
+		temp.input_car();
 		return temp;
 	}
 

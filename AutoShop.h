@@ -6,7 +6,6 @@
 #include <vector>
 #include <iostream>
 #include <string>
-#include <array>
 
 namespace shop
 {
@@ -28,8 +27,7 @@ namespace shop
 		Car& operator=(Car&& car) = default;
 		friend std::ostream& operator <<
 			(std::ostream& os, const Car& car);
-		friend std::istream& operator >>
-			(std::istream& is, Car& car);
+		void input_car();
 		bool operator==(const Car& first)const;
 		~Car() {}
 	private:
@@ -66,11 +64,11 @@ namespace shop
 		enum { SORT_OPTIONS = 4, FIND_OPTIONS };
 		enum { NAME = 1, COST, YEAR, POWER, EQUAL };
 	private:
-		std::array<Compare, SORT_OPTIONS> compare;
-		std::array<Find, FIND_OPTIONS>find;
+		Compare cpmpare[SORT_OPTIONS];
+		Find find[FIND_OPTIONS];
 		unsigned to_compare;
 		unsigned to_find;
-		Car to_search;
+		Car car_to_search;
 	};
 
 	class AutoShop
