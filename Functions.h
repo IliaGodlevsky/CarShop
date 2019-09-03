@@ -18,7 +18,7 @@ namespace shop
 		int up, int down);
 	void pause(clock_t seconds = 0);
 	void show_cars(std::ostream& os,
-		const std::vector<shop::Car>& cars);
+		const Park& cars);
 	void menu(const char* const menu[], size_t size);
 }
 #endif

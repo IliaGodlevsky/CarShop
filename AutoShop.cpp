@@ -8,7 +8,8 @@
 namespace shop
 	///// CLASS CAR METHODS DEFINITIONS /////
 {
-	Car::Car() : name("Car"), year(1900), cost(0), power(1) {}
+	Car::Car() : name("Car"), year(1900), 
+		cost(0), power(1) {}
 
 	Car::Car(const std::string& name, unsigned year,
 		unsigned cost, unsigned power) :
@@ -154,7 +155,7 @@ namespace shop
 
 	void AutoShop::sell()
 	{
-		show(std::cout);
+		show();
 		size_t to_sell = input(sell_msg, cars.size(), 1) - 1;
 		cars.erase(cars.begin() + to_sell);
 	}
@@ -169,11 +170,11 @@ namespace shop
 	{
 		switch (request)
 		{
-		case ADD:  stock();			break;
-		case POP:  sell();			break;
-		case SHOW: show(std::cout);	break;
-		case SORT: sort();			break;
-		case FIND: find();			break;
+		case ADD:  stock();	break;
+		case POP:  sell();	break;
+		case SHOW: show();	break;
+		case SORT: sort();	break;
+		case FIND: find();	break;
 		}
 		pause();
 	}
@@ -185,9 +186,9 @@ namespace shop
 			cars.end(), seller);
 	}
 
-	void AutoShop::show(std::ostream& os)const
+	void AutoShop::show()const
 	{
-		show_cars(os, cars);
+		show_cars(std::cout, cars);
 	}
 
 	void AutoShop::find()
@@ -201,7 +202,7 @@ namespace shop
 			show_cars(std::cout, found_cars);
 	}
 
-	AutoShop::Park AutoShop::find_cars()const
+	Park AutoShop::find_cars()const
 	{
 		Park found_cars;
 		auto found = std::find_if(cars.begin(),
@@ -221,7 +222,7 @@ namespace shop
 		if (answer == YES)
 		{
 			std::ofstream fout(catalog);
-			show(fout);
+			show_cars(fout, cars);
 			std::cout << catalog_msg 
 				<< catalog << std::endl;
 			fout.close();

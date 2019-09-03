@@ -11,6 +11,9 @@
 namespace shop
 {
 	class Seller;
+	class Car;
+
+	using Park = std::vector<Car>;
 
 	class Car
 	{
@@ -72,7 +75,6 @@ namespace shop
 
 	class AutoShop
 	{
-		using Park = std::vector<Car>;
 		using RandomCar = Car(*)();
 	public:
 		AutoShop(size_t size, RandomCar car);
@@ -81,13 +83,14 @@ namespace shop
 		AutoShop(AutoShop&& shop) = default;
 		AutoShop& operator=(const AutoShop& shop) = default;
 		AutoShop& operator=(AutoShop&& shop) = default;
+		~AutoShop() {}
+	public:
 		void take_request();
 		void fulfill_request();
 		void propose_catalog()const;
 		bool customer_is_out()const;
-		~AutoShop() {}
 	private:
-		void show(std::ostream& os)const;
+		void show()const;
 		void sort();
 		void stock();
 		void sell();

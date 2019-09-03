@@ -62,12 +62,12 @@ namespace shop
 	}
 
 	void show_cars(std::ostream& os,
-		const std::vector<shop::Car>& cars)
+		const Park& cars)
 	{
 		unsigned i = 0;
 		for (auto& car : cars)
 		{
-			os << ++i << std::endl
+			os << "     " << ++i << std::endl
 				<< car << std::endl;
 		}
 	}
@@ -77,10 +77,10 @@ namespace shop
 		for (size_t i = 0; i < size; i++)
 		{
 			std::cout << i + 1 
-				<< ". " << menu[i];
+				<< "." << menu[i];
 			if (i % 2 == 0)
 				std::cout << '\t';
-			else if (i % 2 != 0 && i != size - 1)
+			if (i % 2 != 0 && i != size - 1)
 				std::cout << '\n';
 			if (i == size - 1)
 				std::cout << std::endl;
