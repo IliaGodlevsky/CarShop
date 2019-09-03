@@ -112,17 +112,6 @@ namespace shop
 		return first.power == second.power;
 	}
 
-	void Seller::menu()const
-	{
-		std::cout << "1. By name   2. By cost\n";
-		std::cout << "3. By year   4. By power\n";
-	}
-
-	void Seller::sort_menu()const
-	{
-		menu();
-	}
-
 	void Seller::choose_sort_options()
 	{
 		to_compare = input(sort_msg,
@@ -144,12 +133,6 @@ namespace shop
 		case POWER: to_search.power = input(power_msg, MAX_POWER, MIN_POWER); break;
 		case EQUAL: std::cin >> to_search; break;
 		}
-	}
-
-	void Seller::find_menu()const
-	{
-		menu();
-		std::cout << "5. Car\n";
 	}
 
 	///// CLASS AUTOSHOP METHODS DEFINITIONS /////
@@ -174,16 +157,9 @@ namespace shop
 		cars.erase(cars.begin() + to_sell);
 	}
 
-	void AutoShop::menu()const
-	{
-		std::cout << "1. Add    2. Sell\n";
-		std::cout << "3. Show   4. Sort\n";
-		std::cout << "5. Find\n";
-	}
-
 	void AutoShop::take_request()
 	{
-		menu();
+		menu(shop_menu, SHOP_MENU_SIZE);
 		request = input(request_msg, FIND, QUIT);
 	}
 
@@ -202,7 +178,7 @@ namespace shop
 
 	void AutoShop::sort()
 	{
-		seller.sort_menu();
+		menu(seller_menu, SELLER_MENU_SIZE - 1);
 		seller.choose_sort_options();
 		std::sort(cars.begin(),
 			cars.end(), seller);
@@ -215,7 +191,7 @@ namespace shop
 
 	void AutoShop::find()
 	{
-		seller.find_menu();
+		menu(seller_menu, SELLER_MENU_SIZE);
 		seller.choose_find_option();
 		seller.search_request();
 		Park found_cars = find_cars();

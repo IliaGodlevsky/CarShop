@@ -28,7 +28,7 @@ namespace shop
 	90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,
 	165,170,175,180,185,190 };
 
-	enum Minmax {
+	enum Minmax : unsigned {
 		MIN_YEAR = 1991, MAX_YEAR = 2019,
 		MIN_COST = 1000, MAX_COST = 1000000,
 		MIN_POWER = 50, MAX_POWER = 300
@@ -45,5 +45,14 @@ namespace shop
 	const char* const calalog_answer = "Do you want to get our\n"
 		"car catalog (1 - Yes, 0 - No): ";
 	const char* const catalog = "Catalog.txt";
+
+	const unsigned SELLER_MENU_SIZE = 5;
+	const unsigned SHOP_MENU_SIZE = 5;
+
+	const char* const seller_menu[SELLER_MENU_SIZE] = 
+	{ "By name","By cost","By year","By power","By car" };
+
+	const char* const shop_menu[SHOP_MENU_SIZE] =
+	{ "Add","Sell","Show","Sort","Find" };
 }
 #endif

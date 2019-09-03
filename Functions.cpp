@@ -71,4 +71,18 @@ namespace shop
 				<< car << std::endl;
 		}
 	}
+
+	void menu(const char* const menu[], size_t size)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			std::cout << i + 1 << ". " << menu[i];
+			if (i % 2 == 0)
+				std::cout << '\t';
+			else if (i % 2 != 0 && i != size - 1)
+				std::cout << '\n';
+			if (i == size - 1)
+				std::cout << std::endl;
+		}
+	}
 }

@@ -43,8 +43,6 @@ namespace shop
 		Seller();
 		bool operator()(const Car& first, const Car& second)const;
 		bool operator()(const Car& first)const;
-		void find_menu()const;
-		void sort_menu()const;
 		void choose_sort_options();
 		void choose_find_option();
 		void search_request();
@@ -61,7 +59,6 @@ namespace shop
 		bool cost_equal(const Car& first, const Car& second)const;
 		bool year_equal(const Car& first, const Car& second)const;
 		bool power_equal(const Car& first, const Car& second)const;
-		void menu()const;
 	private:
 		enum { SORT_OPTIONS = 4, FIND_OPTIONS };
 		enum { NAME = 1, COST, YEAR, POWER, EQUAL };
@@ -90,7 +87,6 @@ namespace shop
 		bool customer_is_out()const;
 		~AutoShop() {}
 	private:
-		void menu()const;
 		void show(std::ostream& os)const;
 		void sort();
 		void stock();

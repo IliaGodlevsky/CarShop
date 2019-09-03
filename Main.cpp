@@ -5,7 +5,7 @@
 int main()
 {
 	std::srand(unsigned(std::time(nullptr)));
-	const unsigned int SHOP_SIZE = 15;
+	const unsigned int SHOP_SIZE = 7;
 	shop::AutoShop shop(SHOP_SIZE, shop::rand_car);
 	while (!shop.customer_is_out())
 	{
