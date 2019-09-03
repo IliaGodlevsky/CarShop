@@ -34,6 +34,7 @@ namespace shop
 		MIN_POWER = 50, MAX_POWER = 300
 	};
 
+	const char* const find_res = "Nothing was found\n";
 	const char* const year_msg = "Enter year: ";
 	const char* const power_msg = "Enter power: ";
 	const char* const name_msg = "Enter name: ";
@@ -44,6 +45,8 @@ namespace shop
 	const char* const request_msg = "Choose option (0 to quit): ";
 	const char* const calalog_answer = "Do you want to get our\n"
 		"car catalog (1 - Yes, 0 - No): ";
+	const char* const catalog_msg = "You can find your "
+		 "catalog in ";
 	const char* const catalog = "Catalog.txt";
 
 	const unsigned SELLER_MENU_SIZE = 5;

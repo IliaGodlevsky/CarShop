@@ -114,12 +114,14 @@ namespace shop
 
 	void Seller::choose_sort_options()
 	{
+		menu(seller_menu, SORT_OPTIONS);
 		to_compare = input(sort_msg,
 			POWER, NAME);
 	}
 
 	void Seller::choose_find_option()
 	{
+		menu(seller_menu, FIND_OPTIONS);
 		to_find = input(find_msg, EQUAL, NAME);
 	}
 
@@ -178,7 +180,6 @@ namespace shop
 
 	void AutoShop::sort()
 	{
-		menu(seller_menu, SELLER_MENU_SIZE - 1);
 		seller.choose_sort_options();
 		std::sort(cars.begin(),
 			cars.end(), seller);
@@ -191,12 +192,11 @@ namespace shop
 
 	void AutoShop::find()
 	{
-		menu(seller_menu, SELLER_MENU_SIZE);
 		seller.choose_find_option();
 		seller.search_request();
 		Park found_cars = find_cars();
 		if (found_cars.empty())
-			std::cout << "Nothing was found\n";
+			std::cout << find_res;
 		else
 			show_cars(std::cout, found_cars);
 	}
@@ -222,8 +222,8 @@ namespace shop
 		{
 			std::ofstream fout(catalog);
 			show(fout);
-			std::cout << "You can find your "
-				"catalog in " << catalog << std::endl;
+			std::cout << catalog_msg 
+				<< catalog << std::endl;
 			fout.close();
 		}
 		pause();
