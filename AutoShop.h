@@ -64,7 +64,7 @@ namespace shop
 		enum { SORT_OPTIONS = 4, FIND_OPTIONS };
 		enum { NAME = 1, COST, YEAR, POWER, EQUAL };
 	private:
-		Compare cpmpare[SORT_OPTIONS];
+		Compare compare[SORT_OPTIONS];
 		Find find[FIND_OPTIONS];
 		unsigned to_compare;
 		unsigned to_find;
