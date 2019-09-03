@@ -76,7 +76,8 @@ namespace shop
 	{
 		for (size_t i = 0; i < size; i++)
 		{
-			std::cout << i + 1 << ". " << menu[i];
+			std::cout << i + 1 
+				<< ". " << menu[i];
 			if (i % 2 == 0)
 				std::cout << '\t';
 			else if (i % 2 != 0 && i != size - 1)
