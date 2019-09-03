@@ -32,7 +32,6 @@ namespace shop
 			std::cout << msg;
 			std::getline(std::cin, choice);
 		}
-		eatline();
 		return choice;
 	}
 
