@@ -98,10 +98,7 @@ namespace shop
 		void find();
 	private:
 		enum { NO, YES };
-		enum {
-			QUIT, ADD, POP,
-			SHOW, SORT, FIND
-		};
+		enum { QUIT, ADD, POP, SHOW, SORT, FIND };
 		static const unsigned SHOP_MENU_SIZE = 5;
 		const char* const shop_menu[SHOP_MENU_SIZE] =
 		{ "Add","Sell","Show","Sort","Find" };
