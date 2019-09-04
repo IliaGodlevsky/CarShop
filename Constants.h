@@ -28,12 +28,11 @@ namespace shop
 	90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,
 	165,170,175,180,185,190 };
 
-	const unsigned MIN_YEAR = 1991;
-	const unsigned MAX_YEAR = 2019;
-	const unsigned MIN_COST = 1000;
-	const unsigned MAX_COST = 1000000;
-	const unsigned MIN_POWER = 50;
-	const unsigned MAX_POWER = 300;
+	enum {
+		MIN_YEAR = 1991, MAX_YEAR = 2019,
+		MIN_COST = 1000, MAX_COST = 1000000,
+		MIN_POWER = 50, MAX_POWER = 300
+	};
 
 
 	const char* const find_res = "Nothing was found\n";
