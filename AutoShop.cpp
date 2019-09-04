@@ -19,8 +19,8 @@ namespace shop
 	{
 		os << "Name: " << car.name << std::endl;
 		os << "Year: " << car.year << std::endl;
-		os << "Cost: " << car.cost << std::endl;
-		os << "Power: " << car.power << std::endl;
+		os << "Cost: " << car.cost << " $\n";
+		os << "Power: " << car.power << " hp\n";
 		return os;
 	}
 
