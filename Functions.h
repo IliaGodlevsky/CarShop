@@ -15,7 +15,7 @@ namespace shop
 	void pause(clock_t seconds = 0);
 	void show_cars(std::ostream& os,
 		const Park& cars);
-	bool show_cars(std::ostream&os,
+	bool show_cars(std::ostream& os,
 		const Park& cars, const Seller& seller);
 	void menu(const char* const menu[], 
 		size_t size);

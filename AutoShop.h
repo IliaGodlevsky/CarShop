@@ -13,6 +13,7 @@ namespace shop
 	class Car;
 
 	using Park = std::vector<Car>;
+	using Plant = Car(*)();
 
 	class Car
 	{
@@ -73,9 +74,8 @@ namespace shop
 
 	class AutoShop
 	{
-		using RandomCar = Car(*)();
 	public:
-		AutoShop(size_t size, RandomCar car);
+		AutoShop(size_t size, Plant car_gen);
 		AutoShop() {}
 		AutoShop(const AutoShop& shop) = default;
 		AutoShop(AutoShop&& shop) = default;

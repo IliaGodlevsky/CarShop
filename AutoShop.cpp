@@ -137,12 +137,12 @@ namespace shop
 
 	///// CLASS AUTOSHOP METHODS DEFINITIONS /////
 
-	AutoShop::AutoShop(size_t size, RandomCar car)
+	AutoShop::AutoShop(size_t size, Plant car_gen)
 		: request(FIND)
 	{
 		cars.resize(size);
 		std::generate(cars.begin(),
-			cars.end(), car);
+			cars.end(), car_gen);
 	}
 
 	void AutoShop::stock()
@@ -153,7 +153,8 @@ namespace shop
 	void AutoShop::sell()
 	{
 		show();
-		unsigned to_sell = input(sell_msg, cars.size(), 1U) - 1U;
+		unsigned to_sell = input(sell_msg, 
+			cars.size(), 1U) - 1U;
 		cars.erase(cars.begin() + to_sell);
 	}
 
@@ -208,7 +209,6 @@ namespace shop
 				<< catalog << std::endl;
 			fout.close();
 		}
-		std::cout << "Good bye!\n";
 		pause();
 	}
 

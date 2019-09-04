@@ -3,8 +3,6 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-#include <string>
-
 namespace shop
 {
 	const unsigned TYPES = 29;
