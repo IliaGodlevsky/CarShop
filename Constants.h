@@ -50,14 +50,5 @@ namespace shop
 	const char* const catalog_msg = "You can find your "
 		 "catalog in ";
 	const char* const catalog = "Catalog.txt";
-
-	const unsigned SELLER_MENU_SIZE = 5;
-	const unsigned SHOP_MENU_SIZE = 5;
-
-	const char* const seller_menu[SELLER_MENU_SIZE] = 
-	{ "By name","By cost","By year","By power","By car" };
-
-	const char* const shop_menu[SHOP_MENU_SIZE] =
-	{ "Add","Sell","Show","Sort","Find" };
 }
 #endif

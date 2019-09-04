@@ -99,7 +99,7 @@ namespace shop
 			}
 			i++;
 		}
-		return static_cast<bool>(count);
+		return count;
 	}
 
 	void menu(const char* const menu[], size_t size)
