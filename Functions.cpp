@@ -80,10 +80,26 @@ namespace shop
 	{
 		unsigned i = 0;
 		for (auto& car : cars)
-		{
 			os << "     " << ++i << std::endl
 				<< car << std::endl;
+	}
+
+	bool show_cars(std::ostream&os,
+		const Park& cars, const Seller& seller)
+	{
+		unsigned i = 1;
+		unsigned count = 0;
+		for (auto& car : cars)
+		{
+			if (seller(car))
+			{
+				os << "     " << i << std::endl;
+				os << car << std::endl;
+				count++;
+			}
+			i++;
 		}
+		return static_cast<bool>(count);
 	}
 
 	void menu(const char* const menu[], size_t size)

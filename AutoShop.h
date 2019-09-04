@@ -93,7 +93,6 @@ namespace shop
 		void stock();
 		void sell();
 		void find();
-		Park find_cars()const;
 	private:
 		enum { NO, YES };
 		enum {

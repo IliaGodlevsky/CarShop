@@ -192,25 +192,8 @@ namespace shop
 	{
 		seller.choose_find_option();
 		seller.search_request();
-		Park found_cars = find_cars();
-		if (found_cars.empty())
+		if (!show_cars(std::cout, cars, seller))
 			std::cout << find_res;
-		else
-			show_cars(std::cout, found_cars);
-	}
-
-	Park AutoShop::find_cars()const
-	{
-		Park found_cars;
-		auto found = std::find_if(cars.begin(),
-			cars.end(), seller);
-		while (found != cars.end())
-		{
-			found_cars.push_back(*found);
-			found = std::find_if(found + 1,
-				cars.end(), seller);
-		}
-		return found_cars;
 	}
 
 	void AutoShop::propose_catalog()const
@@ -225,6 +208,7 @@ namespace shop
 				<< catalog << std::endl;
 			fout.close();
 		}
+		std::cout << "Good bye!\n";
 		pause();
 	}
 
