@@ -56,11 +56,11 @@ namespace shop
 		bool cost_cmp(const Car& first, const Car& second)const;
 		bool year_cmp(const Car& first, const Car& second)const;
 		bool power_cmp(const Car& first, const Car& second)const;
-		bool equal(const Car& first, const Car& second)const;
-		bool name_equal(const Car& first, const Car& second)const;
-		bool cost_equal(const Car& first, const Car& second)const;
-		bool year_equal(const Car& first, const Car& second)const;
-		bool power_equal(const Car& first, const Car& second)const;
+		bool are_same(const Car& first, const Car& second)const;
+		bool have_same_name(const Car& first, const Car& second)const;
+		bool have_same_cost(const Car& first, const Car& second)const;
+		bool have_same_year(const Car& first, const Car& second)const;
+		bool have_same_power(const Car& first, const Car& second)const;
 	private:
 		static const unsigned SELLER_MENU_SIZE = 5;
 		enum { SORT_OPTIONS = 4, FIND_OPTIONS };

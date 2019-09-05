@@ -49,11 +49,11 @@ namespace shop
 		compare[1] = &Seller::cost_cmp;
 		compare[2] = &Seller::year_cmp;
 		compare[3] = &Seller::power_cmp;
-		find[0] = &Seller::name_equal;
-		find[1] = &Seller::cost_equal;
-		find[2] = &Seller::year_equal;
-		find[3] = &Seller::power_equal;
-		find[4] = &Seller::equal;
+		find[0] = &Seller::have_same_name;
+		find[1] = &Seller::have_same_cost;
+		find[2] = &Seller::have_same_year;
+		find[3] = &Seller::have_same_power;
+		find[4] = &Seller::are_same;
 	}
 	bool Seller::operator()(const Car& first, const Car& second)const
 	{
@@ -85,27 +85,27 @@ namespace shop
 		return (this->*find[to_find - 1])(first, car_to_search);
 	}
 
-	bool Seller::equal(const Car& first, const Car& second)const
+	bool Seller::are_same(const Car& first, const Car& second)const
 	{
 		return first == second;
 	}
 
-	bool Seller::name_equal(const Car& first, const Car& second)const
+	bool Seller::have_same_name(const Car& first, const Car& second)const
 	{
 		return first.name == second.name;
 	}
 
-	bool Seller::cost_equal(const Car& first, const Car& second)const
+	bool Seller::have_same_cost(const Car& first, const Car& second)const
 	{
 		return first.cost == second.cost;
 	}
 
-	bool Seller::year_equal(const Car& first, const Car& second)const
+	bool Seller::have_same_year(const Car& first, const Car& second)const
 	{
 		return first.year == second.year;
 	}
 
-	bool Seller::power_equal(const Car& first, const Car& second)const
+	bool Seller::have_same_power(const Car& first, const Car& second)const
 	{
 		return first.power == second.power;
 	}
