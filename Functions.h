@@ -11,6 +11,9 @@ namespace shop
 {
 	shop::Car rand_car();
 	shop::Car defined_car();
+	// linear function
+	unsigned linear(unsigned range,
+		unsigned add, unsigned multi = 1);
 	void eatline();
 	void pause(clock_t seconds = 0);
 	void show_cars(std::ostream& os,

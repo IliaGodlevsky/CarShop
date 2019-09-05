@@ -62,11 +62,10 @@ namespace shop
 	shop::Car rand_car()
 	{
 		std::string name = names[rand() % TYPES];
-		unsigned year = rand() % TYPES + 1;
-		unsigned cost = rand() % TYPES + 1;
-		unsigned power = powers[rand() % TYPES];
-		return shop::Car(name, year + YEAR_ADD, 
-			cost * COST_MULTI, power);
+		unsigned year = linear(TYPES, YEAR_ADD);
+		unsigned cost = linear(TYPES, COST_MULTI, COST_MULTI);
+		unsigned power = linear(TYPES, POWER_ADD, POWER_MULTI);
+		return shop::Car(name, year, cost, power);
 	}
 
 	shop::Car defined_car()
@@ -74,6 +73,12 @@ namespace shop
 		shop::Car temp;
 		temp.input_car();
 		return temp;
+	}
+
+	inline unsigned linear(unsigned range,
+		unsigned add, unsigned multi)
+	{
+		return (rand() % range) * multi + add;
 	}
 
 	void show_cars(std::ostream& os,

@@ -15,13 +15,11 @@ namespace shop
 	"Hitachi" };
 
 	enum {
-		YEAR_ADD = 1990,
+		YEAR_ADD = 1991,
 		COST_MULTI = 1000,
+		POWER_MULTI = 5,
+		POWER_ADD = 50
 	};
-
-	const unsigned powers[TYPES] = { 50,55,60,65,70,75,80,85,
-	90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,
-	165,170,175,180,185,190 };
 
 	enum {
 		MIN_YEAR = 1991, MAX_YEAR = 2019,
