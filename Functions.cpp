@@ -62,8 +62,8 @@ namespace shop
 	shop::Car rand_car()
 	{
 		std::string name = names[rand() % TYPES];
-		unsigned year = years_and_costs[rand() % TYPES];
-		unsigned cost = years_and_costs[rand() % TYPES];
+		unsigned year = rand() % TYPES + 1;
+		unsigned cost = rand() % TYPES + 1;
 		unsigned power = powers[rand() % TYPES];
 		return shop::Car(name, year + YEAR_ADD, 
 			cost * COST_MULTI, power);
