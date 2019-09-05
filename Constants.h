@@ -16,9 +16,9 @@ namespace shop
 
 	enum {
 		YEAR_ADD = 1991,
-		COST_MULTI = 1000,
-		POWER_MULTI = 5,
-		POWER_ADD = 50
+		COST_MULT = 1000,
+		POW_MULT = 5,
+		POW_ADD = 50
 	};
 
 	enum {
