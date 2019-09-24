@@ -61,7 +61,7 @@ void pause(clock_t seconds)
 
 Car rand_car()
 {
-	static Names names = load_names();
+	static Names names = load_names(filename);
 	std::string name = names[rand() % names.size()];
 	unsigned year = linear(YEAR_ADD);
 	unsigned cost = linear(COST_MULT, COST_MULT);
@@ -135,21 +135,14 @@ void visit_auto_shop(AutoShop& shop)
 	shop.propose_catalog();
 }
 
-Names load_names()
+Names load_names(std::string filename)
 {
-	std::string name;
 	Names names;
+	std::string name;
 	std::ifstream fin(filename);
 	while (!fin.eof())
 	{
 		std::getline(fin, name);
-		while (fin.fail())
-		{
-			eatline(fin);
-			std::getline(fin, name);
-			if (fin.eof())
-				break;
-		}
 		names.push_back(name);
 	}
 	fin.close();

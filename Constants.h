@@ -3,40 +3,8 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-//Audi
-//Cadillac
-//Lada
-//BMW
-//Geely
-//Opel
-//Skoda
-//BELAZ
-//Volkswagen
-//Caterpillar
-//Benz
-//Mersedes
-//Bugatti
-//Daewoo
-//Dakar
-//Ferrari
-//Fiat
-//Ford
-//Honda
-//Hyundai
-//Jaguar
-//Jeep
-//Komatsu
-//Zotye
-//Mathis
-//Mitsubishi
-//Lifan
-//Lamborghini
-//Hitachi
-const unsigned X = 29;
-
-const char* const filename = "Car names.txt";
-
 enum {
+	VARIABLE = 29,
 	YEAR_ADD = 1991,
 	COST_MULT = 1000,
 	POW_MULT = 5,
@@ -49,6 +17,7 @@ enum {
 	MIN_POWER = 50, MAX_POWER = 300
 };
 
+const char* const filename = "Car names.txt";
 const char* const not_found = "Nothing was found\n";
 const char* const year_msg = "Enter year: ";
 const char* const power_msg = "Enter power: ";

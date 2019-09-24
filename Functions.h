@@ -15,7 +15,7 @@ Car defined_car();
 // linear function
 unsigned linear(unsigned b = 0,
 	unsigned a = 1,
-	unsigned x = std::rand() % X);
+	unsigned x = std::rand() % VARIABLE);
 void eatline(std::istream& is);
 void pause(clock_t seconds = 0);
 void show_cars(std::ostream& os,
@@ -31,6 +31,6 @@ std::string input(const char* msg);
 bool error(unsigned choice,
 	unsigned up, unsigned down);
 void visit_auto_shop(AutoShop& shop);
-Names load_names();
+Names load_names(std::string filename);
 
 #endif
