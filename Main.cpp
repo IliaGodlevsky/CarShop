@@ -3,13 +3,8 @@
 
 int main()
 {
-	std::srand(unsigned(std::time(nullptr)));
+	srand(unsigned(time(nullptr)));
 	const unsigned int SHOP_SIZE = 9U;
-	shop::AutoShop shop(SHOP_SIZE, shop::rand_car);
-	while (!shop.customer_is_out())
-	{
-		shop.take_request();
-		shop.fulfill_request();
-	}
-	shop.propose_catalog();
+	AutoShop shop(SHOP_SIZE, rand_car);
+	visit_auto_shop(shop);
 }
