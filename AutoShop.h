@@ -52,10 +52,10 @@ namespace shop
 		// Pointer to a METHOD
 		using Compare = bool(Seller::*)(const Car&, const Car&)const;
 		using Find = Compare;
-		bool name_cmp(const Car& first, const Car& second)const;
-		bool cost_cmp(const Car& first, const Car& second)const;
-		bool year_cmp(const Car& first, const Car& second)const;
-		bool power_cmp(const Car& first, const Car& second)const;
+		bool is_less_name(const Car& first, const Car& second)const;
+		bool is_less_cost(const Car& first, const Car& second)const;
+		bool is_greater_year(const Car& first, const Car& second)const;
+		bool is_greater_power(const Car& first, const Car& second)const;
 		bool are_same(const Car& first, const Car& second)const;
 		bool have_same_name(const Car& first, const Car& second)const;
 		bool have_same_cost(const Car& first, const Car& second)const;
