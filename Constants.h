@@ -3,6 +3,8 @@
 #ifndef CONST_H_
 #define CONST_H_
 
+const unsigned int CARS = 9U;
+
 enum {
 	VARIABLE = 29,
 	YEAR_ADD = 1991,
