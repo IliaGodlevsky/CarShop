@@ -209,7 +209,7 @@ namespace shop
 	{
 		unsigned answer = 
 			input(calalog_answer, YES, NO);
-		if (answer == YES)
+		if (YES == answer)
 		{
 			std::ofstream fout(catalog);
 			show_cars(fout, cars);
