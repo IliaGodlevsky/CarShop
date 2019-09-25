@@ -18,6 +18,7 @@ unsigned linear(unsigned b = 0,
 	unsigned x = std::rand() % VARIABLE);
 void eatline(std::istream& is);
 void pause(clock_t seconds = 0);
+Names load_names(std::string filename);
 void show_cars(std::ostream& os,
 	const Park& cars);
 bool show_cars(std::ostream& os,
@@ -30,7 +31,4 @@ unsigned input(const char* msg,
 std::string input(const char* msg);
 bool error(unsigned choice,
 	unsigned up, unsigned down);
-void visit_auto_shop(AutoShop& shop);
-Names load_names(std::string filename);
-
 #endif

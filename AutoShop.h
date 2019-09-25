@@ -7,7 +7,6 @@
 #include <iostream>
 #include <string>
 
-
 class Seller;
 class Car;
 

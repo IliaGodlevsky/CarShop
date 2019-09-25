@@ -125,16 +125,6 @@ void menu(const char* const menu[], size_t size)
 	}
 }
 
-void visit_auto_shop(AutoShop& shop)
-{
-	while (!shop.customer_is_out())
-	{
-		shop.take_request();
-		shop.fulfill_request();
-	}
-	shop.propose_catalog();
-}
-
 Names load_names(std::string filename)
 {
 	Names names;

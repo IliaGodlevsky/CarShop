@@ -5,5 +5,10 @@ int main()
 {
 	srand(unsigned(time(nullptr)));
 	AutoShop shop(CARS, rand_car);
-	visit_auto_shop(shop);
+	while (!shop.customer_is_out())
+	{
+		shop.take_request();
+		shop.fulfill_request();
+	}
+	shop.propose_catalog();
 }
