@@ -3,7 +3,7 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-const unsigned int CARS = 50U;
+const unsigned int CARS = 9U;
 
 enum {
 	VARIABLE = 29,
