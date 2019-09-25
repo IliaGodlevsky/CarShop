@@ -69,7 +69,6 @@ private:
 private:
 	Compare compare[SORT_OPTIONS];
 	Compare find[FIND_OPTIONS];
-
 	unsigned to_compare;
 	unsigned to_find;
 	Car car_to_search;
