@@ -64,14 +64,15 @@ private:
 private:
 	static const unsigned SELLER_MENU_SIZE = 5;
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	enum Parametre { NAME = 1, COST, YEAR, POWER, EQUAL };
+	// Car's characters
+	enum Char { NAME = 1, COST, YEAR, POWER, EQUAL };
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "By name","By cost","By year","By power","By car" };
 private:
 	Compare compare[SORT_OPTIONS];
 	Compare find[FIND_OPTIONS];
-	Parametre to_compare;
-	Parametre to_find;
+	Char to_compare; 
+	Char to_find;
 	Car car_to_search;
 };
 
