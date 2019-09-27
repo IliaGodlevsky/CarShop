@@ -3,9 +3,8 @@
 #include <algorithm>
 
 #include "Functions.h"
-#include "Constants.h"
 
-unsigned input(const char* msg,
+unsigned input(const std::string& msg,
 	unsigned up, unsigned down)
 {
 	unsigned choice;
@@ -21,7 +20,7 @@ unsigned input(const char* msg,
 	return choice;
 }
 
-std::string input(const char* msg)
+std::string input(const std::string& msg)
 {
 	std::string choice;
 	std::cout << msg;
@@ -33,6 +32,20 @@ std::string input(const char* msg)
 		std::getline(std::cin, choice);
 	}
 	return choice;
+}
+
+Strings load_lines(std::string filename)
+{
+	Strings names;
+	std::string name;
+	std::ifstream fin(filename);
+	while (!fin.eof())
+	{
+		std::getline(fin, name);
+		names.push_back(name);
+	}
+	fin.close();
+	return names;
 }
 
 bool error(unsigned choice,
@@ -61,7 +74,7 @@ void pause(clock_t seconds)
 
 Car rand_car()
 {
-	static Names names = load_names(filename);
+	static Strings names = load_lines(filename);
 	std::string name = names[rand() % names.size()];
 	unsigned year = linear(YEAR_ADD);
 	unsigned cost = linear(COST_MULT, COST_MULT);
@@ -71,15 +84,22 @@ Car rand_car()
 
 Car defined_car()
 {
-	Car temp;
-	temp.input_car();
-	return temp;
+	return Car().input_car();
 }
 
 inline unsigned linear(unsigned b,
-	unsigned a, unsigned x)
+	unsigned a,
+	unsigned x)
 {
 	return a * x + b;
+}
+
+void show_car(std::ostream& os,
+	const Car& car,
+	unsigned index)
+{
+	os << "     " << index << std::endl
+		<< car << std::endl;
 }
 
 void show_cars(std::ostream& os,
@@ -87,8 +107,7 @@ void show_cars(std::ostream& os,
 {
 	unsigned i = 0;
 	for (auto& car : cars)
-		os << "     " << ++i << std::endl
-		<< car << std::endl;
+		show_car(os, car, ++i);
 }
 
 bool show_cars(std::ostream&os,
@@ -101,8 +120,7 @@ bool show_cars(std::ostream&os,
 	{
 		if (seller(car))
 		{
-			os << "     " << i << std::endl;
-			os << car << std::endl;
+			show_car(os, car, i);
 			count++;
 		}
 		i++;
@@ -115,26 +133,11 @@ void menu(const char* const menu[], size_t size)
 	for (size_t i = 0; i < size; i++)
 	{
 		std::cout << i + 1
-			<< "." << menu[i];
+			<< ". " << menu[i];
 		if (i % 2 == 0)
 			std::cout << '\t';
 		if (i % 2 != 0 && i != size - 1)
-			std::cout << '\n';
-		if (i == size - 1)
 			std::cout << std::endl;
 	}
-}
-
-Names load_names(std::string filename)
-{
-	Names names;
-	std::string name;
-	std::ifstream fin(filename);
-	while (!fin.eof())
-	{
-		std::getline(fin, name);
-		names.push_back(name);
-	}
-	fin.close();
-	return names;
+	std::cout << std::endl;
 }

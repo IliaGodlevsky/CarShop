@@ -1,0 +1,12 @@
+Nothing was found\n
+Enter year: 
+Enter power: 
+Enter name: 
+Enter cost: 
+Choose sort option: 
+Choose find option: 
+Choose car number: 
+Enter shop size: 
+Choose option (0 to quit): 
+Do you want to get our car catalog (1 - Yes, 0 - No): 
+You can find your catalog in 

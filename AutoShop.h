@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 
+
 class Seller;
 class Car;
 
@@ -26,7 +27,7 @@ public:
 	Car& operator=(Car&&) = default;
 	friend std::ostream& operator <<
 		(std::ostream& os, const Car& car);
-	void input_car();
+	Car& input_car();
 	bool operator==(const Car& first)const;
 	~Car() {}
 private:

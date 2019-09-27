@@ -7,6 +7,8 @@
 
 ///// CLASS CAR METHODS DEFINITIONS /////
 
+Strings message = load_lines(messages);
+
 Car::Car() : name("Car"), year(1900),
 cost(0), power(1) {}
 
@@ -24,12 +26,13 @@ std::ostream& operator <<(std::ostream& os, const Car& car)
 	return os;
 }
 
-void Car::input_car()
+Car& Car::input_car()
 {
-	name = input(name_msg);
-	year = input(year_msg, MAX_YEAR, MIN_YEAR);
-	power = input(power_msg, MAX_POWER, MIN_POWER);
-	cost = input(cost_msg, MAX_COST, MIN_COST);
+	name = input(message[NAME_MSG]);
+	year = input(message[YEAR_MSG], MAX_YEAR, MIN_YEAR);
+	power = input(message[POWER_MSG], MAX_POWER, MIN_POWER);
+	cost = input(message[COST_MSG], MAX_COST, MIN_COST);
+	return *this;
 }
 
 bool Car::operator==(const Car& first)const
@@ -113,14 +116,14 @@ bool Seller::have_same_power(const Car& first, const Car& second)const
 void Seller::choose_sort_options()
 {
 	menu(seller_menu, SORT_OPTIONS);
-	to_compare = input(sort_msg,
+	to_compare = input(message[SORT_MSG],
 		POWER, NAME);
 }
 
 void Seller::choose_find_option()
 {
 	menu(seller_menu, FIND_OPTIONS);
-	to_find = input(find_msg, EQUAL, NAME);
+	to_find = input(message[FIND_MSG], EQUAL, NAME);
 }
 
 void Seller::search_request()
@@ -128,15 +131,15 @@ void Seller::search_request()
 	switch (to_find)
 	{
 	case NAME:
-		car_to_search.name = input(name_msg); break;
+		car_to_search.name = input(message[NAME_MSG]); break;
 	case YEAR:
-		car_to_search.year = input(year_msg,
+		car_to_search.year = input(message[YEAR_MSG],
 			MAX_YEAR, MIN_YEAR); break;
 	case COST:
-		car_to_search.cost = input(cost_msg,
+		car_to_search.cost = input(message[COST_MSG],
 			MAX_COST, MIN_COST); break;
 	case POWER:
-		car_to_search.power = input(power_msg,
+		car_to_search.power = input(message[POWER_MSG],
 			MAX_POWER, MIN_POWER); break;
 	case EQUAL:
 		car_to_search.input_car(); break;
@@ -146,9 +149,8 @@ void Seller::search_request()
 ///// CLASS AUTOSHOP METHODS DEFINITIONS /////
 
 AutoShop::AutoShop(size_t size, Plant car_gen)
-	: request(FIND)
+	: request(FIND), cars(size)
 {
-	cars.resize(size);
 	std::generate(cars.begin(),
 		cars.end(), car_gen);
 }
@@ -161,7 +163,7 @@ void AutoShop::stock()
 void AutoShop::sell()
 {
 	show();
-	unsigned to_sell = input(sell_msg,
+	unsigned to_sell = input(message[SELL_MSG],
 		cars.size(), 1U) - 1U;
 	cars.erase(cars.begin() + to_sell);
 }
@@ -169,7 +171,8 @@ void AutoShop::sell()
 void AutoShop::take_request()
 {
 	menu(shop_menu, SHOP_MENU_SIZE);
-	request = input(request_msg, FIND, QUIT);
+	request = input(message[REQUEST_MSG],
+		FIND, QUIT);
 }
 
 void AutoShop::fulfill_request()
@@ -202,18 +205,18 @@ void AutoShop::find()
 	seller.choose_find_option();
 	seller.search_request();
 	if (!show_cars(std::cout, cars, seller))
-		std::cout << not_found;
+		std::cout << message[NOT_FOUND];
 }
 
 void AutoShop::propose_catalog()const
 {
 	unsigned answer =
-		input(calalog_answer, YES, NO);
+		input(message[CAT_ANS], YES, NO);
 	if (YES == answer)
 	{
 		std::ofstream fout(catalog);
 		show_cars(fout, cars);
-		std::cout << catalog_msg
+		std::cout << message[CAT_MSG]
 			<< catalog << std::endl;
 		fout.close();
 	}

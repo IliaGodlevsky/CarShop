@@ -8,7 +8,7 @@
 #include "AutoShop.h"
 #include "Constants.h"
 
-using Names = std::vector<std::string>;
+using Strings = std::vector<std::string>;
 
 Car rand_car();
 Car defined_car();
@@ -18,7 +18,9 @@ unsigned linear(unsigned b = 0,
 	unsigned x = std::rand() % VARIABLE);
 void eatline(std::istream& is);
 void pause(clock_t seconds = 0);
-Names load_names(std::string filename);
+Strings load_lines(std::string filename);
+void show_car(std::ostream& os, 
+	const Car& car, unsigned index);
 void show_cars(std::ostream& os,
 	const Park& cars);
 bool show_cars(std::ostream& os,
@@ -26,9 +28,9 @@ bool show_cars(std::ostream& os,
 	const Seller& seller);
 void menu(const char* const menu[],
 	size_t size);
-unsigned input(const char* msg,
+unsigned input(const std::string& msg,
 	unsigned up, unsigned  down);
-std::string input(const char* msg);
+std::string input(const std::string& msg);
 bool error(unsigned choice,
 	unsigned up, unsigned down);
 #endif
