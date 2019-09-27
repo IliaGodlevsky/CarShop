@@ -7,7 +7,6 @@
 #include <iostream>
 #include <string>
 
-
 class Seller;
 class Car;
 
@@ -21,15 +20,10 @@ public:
 	Car();
 	Car(const std::string& name, unsigned year,
 		unsigned cost, unsigned power);
-	Car(const Car&) = default;
-	Car(Car&&) = default;
-	Car& operator=(const Car&) = default;
-	Car& operator=(Car&&) = default;
 	friend std::ostream& operator <<
 		(std::ostream& os, const Car& car);
 	Car& input_car();
 	bool operator==(const Car& first)const;
-	~Car() {}
 private:
 	std::string name;
 	unsigned year;
@@ -80,12 +74,6 @@ class AutoShop
 {
 public:
 	AutoShop(size_t size, Plant car_gen);
-	AutoShop() {}
-	AutoShop(const AutoShop&) = default;
-	AutoShop(AutoShop&&) = default;
-	AutoShop& operator=(const AutoShop&) = default;
-	AutoShop& operator=(AutoShop&&) = default;
-	~AutoShop() {}
 public:
 	void take_request();
 	void fulfill_request();
