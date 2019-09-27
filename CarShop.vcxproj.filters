@@ -38,6 +38,5 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Car names.txt" />
-    <Text Include="Messages.txt" />
   </ItemGroup>
 </Project>
