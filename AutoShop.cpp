@@ -4,11 +4,10 @@
 #include "Functions.h"
 #include "Constants.h"
 
-
 ///// CLASS CAR METHODS DEFINITIONS /////
 
-Car::Car() : name("Car"), year(1900),
-cost(0), power(1) {}
+Car::Car() : name("Car"), year(MIN_YEAR),
+cost(MIN_COST), power(MIN_POWER) {}
 
 Car::Car(const std::string& name, unsigned year,
 	unsigned cost, unsigned power) :
@@ -114,14 +113,14 @@ bool Seller::have_same_power(const Car& first, const Car& second)const
 void Seller::choose_sort_options()
 {
 	menu(seller_menu, SORT_OPTIONS);
-	to_compare = (Char)input(sort_msg, 
+	to_compare = input(sort_msg, 
 		POWER, NAME);
 }
 
 void Seller::choose_find_option()
 {
 	menu(seller_menu, FIND_OPTIONS);
-	to_find = (Char)input(find_msg, 
+	to_find = input(find_msg, 
 		EQUAL, NAME);
 }
 
@@ -170,7 +169,7 @@ void AutoShop::sell()
 void AutoShop::take_request()
 {
 	menu(shop_menu, SHOP_MENU_SIZE);
-	request = (Request)input(request_msg,
+	request = input(request_msg,
 		FIND, QUIT);
 }
 

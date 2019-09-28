@@ -3,8 +3,6 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-#include <string>
-
 enum {
 	VARIABLE = 29,
 	YEAR_ADD = 1991,
@@ -20,20 +18,20 @@ enum {
 	MIN_POWER = 50, MAX_POWER = 300
 };
 
-const std::string not_found = "Nothing was found\n";
-const std::string year_msg = "Enter year: ";
-const std::string power_msg = "Enter power: ";
-const std::string name_msg = "Enter name: ";
-const std::string cost_msg = "Enter cost: ";
-const std::string sort_msg = "Choose sort option: ";
-const std::string find_msg = "Choose find option: ";
-const std::string sell_msg = "Choose car number: ";
-const std::string shop_msg = "Enter shop size: ";
-const std::string request_msg = "Choose option (0 to quit): ";
-const std::string calalog_answer = "Do you want to get our "
+const char* const not_found = "Nothing was found\n";
+const char* const year_msg = "Enter year: ";
+const char* const power_msg = "Enter power: ";
+const char* const name_msg = "Enter name: ";
+const char* const cost_msg = "Enter cost: ";
+const char* const sort_msg = "Choose sort option: ";
+const char* const find_msg = "Choose find option: ";
+const char* const sell_msg = "Choose car number: ";
+const char* const shop_msg = "Enter shop size: ";
+const char* const request_msg = "Choose option (0 to quit): ";
+const char* const calalog_answer = "Do you want to get our"
 "car catalog (1 - Yes, 0 - No): ";
-const std::string catalog_msg = "You can find your "
+const char* const catalog_msg = "You can find your "
 "catalog in ";
-const std::string filename = "Car names.txt";
-const std::string catalog = "Catalog.txt";
+const char* const filename = "Car names.txt";
+const char* const catalog = "Catalog.txt";
 #endif

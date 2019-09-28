@@ -4,7 +4,7 @@
 
 #include "Functions.h"
 
-unsigned input(const std::string& msg,
+unsigned input(const char* msg,
 	unsigned up, unsigned down)
 {
 	unsigned choice;
@@ -20,7 +20,7 @@ unsigned input(const std::string& msg,
 	return choice;
 }
 
-std::string input(const std::string& msg)
+std::string input(const char* msg)
 {
 	std::string choice;
 	std::cout << msg;

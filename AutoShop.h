@@ -64,14 +64,14 @@ private:
 	static const unsigned SELLER_MENU_SIZE = 5;
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
 	// Car's characters
-	enum Char { NAME = 1, COST, YEAR, POWER, EQUAL };
+	enum { NAME = 1, COST, YEAR, POWER, EQUAL };
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "By name","By cost","By year","By power","By car" };
 private:
 	Compare compare[SORT_OPTIONS];
 	Compare find[FIND_OPTIONS];
-	Char to_compare; 
-	Char to_find;
+	unsigned to_compare; 
+	unsigned to_find;
 	Car car_to_search;
 };
 
@@ -98,12 +98,12 @@ private:
 	void find();
 private:
 	enum { NO, YES };
-	enum Request { QUIT, STOCK, SELL, SHOW, SORT, FIND };
+	enum { QUIT, STOCK, SELL, SHOW, SORT, FIND };
 	static const unsigned SHOP_MENU_SIZE = 5;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
 private:
-	Request request;
+	unsigned request;
 	Park cars;
 	Seller seller;
 };

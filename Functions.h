@@ -28,9 +28,9 @@ bool show_cars(std::ostream& os,
 	const Seller& seller);
 void menu(const char* const menu[],
 	size_t size);
-unsigned input(const std::string& msg,
+unsigned input(const char* msg,
 	unsigned up, unsigned  down);
-std::string input(const std::string& msg);
+std::string input(const char* msg);
 bool error(unsigned choice,
 	unsigned up, unsigned down);
 #endif
