@@ -82,7 +82,7 @@ bool Seller::is_greater_power(const Car& first, const Car& second)const
 
 bool Seller::operator()(const Car& first)const
 {
-	return (this->*find[to_find - 1])(first, car_to_search);
+	return (this->*find[to_find - 1])(first, car_to_find);
 }
 
 bool Seller::are_same(const Car& first, const Car& second)const
@@ -124,23 +124,23 @@ void Seller::choose_find_option()
 		EQUAL, NAME);
 }
 
-void Seller::search_request()
+void Seller::find_request()
 {
 	switch (to_find)
 	{
 	case NAME:
-		car_to_search.name = input(name_msg); break;
+		car_to_find.name = input(name_msg); break;
 	case YEAR:
-		car_to_search.year = input(year_msg,
+		car_to_find.year = input(year_msg,
 			MAX_YEAR, MIN_YEAR); break;
 	case COST:
-		car_to_search.cost = input(cost_msg,
+		car_to_find.cost = input(cost_msg,
 			MAX_COST, MIN_COST); break;
 	case POWER:
-		car_to_search.power = input(power_msg,
+		car_to_find.power = input(power_msg,
 			MAX_POWER, MIN_POWER); break;
 	case EQUAL:
-		car_to_search.input_car(); break;
+		car_to_find.input_car(); break;
 	}
 }
 
@@ -201,7 +201,7 @@ void AutoShop::show()const
 void AutoShop::find()
 {
 	seller.choose_find_option();
-	seller.search_request();
+	seller.find_request();
 	if (!show_cars(std::cout, cars, seller))
 		std::cout << not_found;
 }

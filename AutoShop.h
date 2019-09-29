@@ -45,7 +45,7 @@ public:
 	bool operator()(const Car& first)const;
 	void choose_sort_options();
 	void choose_find_option();
-	void search_request();
+	void find_request();
 private:
 	// Pointer to a METHOD
 	using Compare = bool(Seller::*)(const Car&, const Car&)const;
@@ -61,10 +61,9 @@ private:
 	bool have_same_year(const Car& first, const Car& second)const;
 	bool have_same_power(const Car& first, const Car& second)const;
 private:
-	static const unsigned SELLER_MENU_SIZE = 5;
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	// Car's characters
 	enum { NAME = 1, COST, YEAR, POWER, EQUAL };
+	static const unsigned SELLER_MENU_SIZE = EQUAL;
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "By name","By cost","By year","By power","By car" };
 private:
@@ -72,7 +71,12 @@ private:
 	Compare find[FIND_OPTIONS];
 	unsigned to_compare; 
 	unsigned to_find;
-	Car car_to_search;
+	Car car_to_find;
+};
+
+class Factory
+{
+
 };
 
 class AutoShop
@@ -99,12 +103,12 @@ private:
 private:
 	enum { NO, YES };
 	enum { QUIT, STOCK, SELL, SHOW, SORT, FIND };
-	static const unsigned SHOP_MENU_SIZE = 5;
+	static const unsigned SHOP_MENU_SIZE = FIND;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
 private:
 	unsigned request;
 	Park cars;
-	Seller seller;
+	mutable Seller seller;
 };
 #endif
