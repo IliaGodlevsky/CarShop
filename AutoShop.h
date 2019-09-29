@@ -74,11 +74,6 @@ private:
 	Car car_to_find;
 };
 
-class Factory
-{
-
-};
-
 class AutoShop
 {
 public:
@@ -109,6 +104,6 @@ private:
 private:
 	unsigned request;
 	Park cars;
-	mutable Seller seller;
+	Seller seller;
 };
 #endif
