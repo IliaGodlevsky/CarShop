@@ -3,6 +3,7 @@
 #ifndef CONST_H_
 #define CONST_H_
 
+// linear function constants
 enum {
 	VARIABLE = 29,
 	YEAR_ADD = 1991,
@@ -11,6 +12,7 @@ enum {
 	POW_ADD = 50
 };
 
+// range constants
 enum {
 	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 25,
 	MIN_YEAR = 1991, MAX_YEAR = 2019,
@@ -18,6 +20,7 @@ enum {
 	MIN_POWER = 50, MAX_POWER = 300
 };
 
+// message constants
 const char* const not_found = "Nothing was found\n";
 const char* const year_msg = "Enter year: ";
 const char* const power_msg = "Enter power: ";
@@ -33,6 +36,8 @@ const char* const calalog_answer = "Do you want to get our "
 "car catalog (1 - Yes, 0 - No): ";
 const char* const catalog_msg = "You can find your "
 "catalog in ";
+
+// filenames
 const char* const filename = "Car names.txt";
 const char* const catalog = "Catalog.txt";
 #endif

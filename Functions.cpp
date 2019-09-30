@@ -2,34 +2,26 @@
 
 #include "Functions.h"
 
-unsigned input(const char* msg,
-	unsigned up, unsigned down)
+Car rand_car()
 {
-	unsigned choice;
-	std::cout << msg;
-	std::cin >> choice;
-	while (error(choice, up, down))
-	{
-		eatline(std::cin);
-		std::cout << msg;
-		std::cin >> choice;
-	}
-	eatline(std::cin);
-	return choice;
+	static Strings names = load_file(filename);
+	std::string name = names[rand() % names.size()];
+	unsigned year = linear(YEAR_ADD);
+	unsigned cost = linear(COST_MULT, COST_MULT);
+	unsigned power = linear(POW_ADD, POW_MULT);
+	return Car(name, year, cost, power);
 }
 
-std::string input(const char* msg)
+Car defined_car()
 {
-	std::string choice;
-	std::cout << msg;
-	std::getline(std::cin, choice);
-	while (std::cin.fail())
-	{
-		eatline(std::cin);
-		std::cout << msg;
-		std::getline(std::cin, choice);
-	}
-	return choice;
+	return Car().input_car();
+}
+
+inline unsigned linear(unsigned b,
+	unsigned a,
+	unsigned x)
+{
+	return a * x + b;
 }
 
 Strings load_file(std::string filename)
@@ -61,52 +53,6 @@ Strings file_reading(std::ifstream& is)
 	}
 	is.close();
 	return names;
-}
-
-bool error(unsigned choice,
-	unsigned up, unsigned down)
-{
-	return std::cin.fail() ||
-		choice > up || choice < down;
-}
-
-void eatline(std::istream& is)
-{
-	is.clear();
-	while (!iscntrl(is.get()))
-		continue;
-}
-
-void pause(clock_t seconds)
-{
-	clock_t start = clock();
-	while (clock() - start <
-		seconds * CLOCKS_PER_SEC)
-		continue;
-	system("pause");
-	system("cls");
-}
-
-Car rand_car()
-{
-	static Strings names = load_file(filename);
-	std::string name = names[rand() % names.size()];
-	unsigned year = linear(YEAR_ADD);
-	unsigned cost = linear(COST_MULT, COST_MULT);
-	unsigned power = linear(POW_ADD, POW_MULT);
-	return Car(name, year, cost, power);
-}
-
-Car defined_car()
-{
-	return Car().input_car();
-}
-
-inline unsigned linear(unsigned b,
-	unsigned a,
-	unsigned x)
-{
-	return a * x + b;
 }
 
 void show_car(std::ostream& os,
@@ -143,6 +89,50 @@ bool show_cars(std::ostream&os,
 	return count;
 }
 
+unsigned input(const char* msg,
+	unsigned up, unsigned down)
+{
+	unsigned choice;
+	std::cout << msg;
+	std::cin >> choice;
+	while (error(choice, up, down))
+	{
+		eatline(std::cin);
+		std::cout << msg;
+		std::cin >> choice;
+	}
+	eatline(std::cin);
+	return choice;
+}
+
+std::string input(const char* msg)
+{
+	std::string choice;
+	std::cout << msg;
+	std::getline(std::cin, choice);
+	while (std::cin.fail())
+	{
+		eatline(std::cin);
+		std::cout << msg;
+		std::getline(std::cin, choice);
+	}
+	return choice;
+}
+
+bool error(unsigned choice,
+	unsigned up, unsigned down)
+{
+	return std::cin.fail() ||
+		choice > up || choice < down;
+}
+
+void eatline(std::istream& is)
+{
+	is.clear();
+	while (!iscntrl(is.get()))
+		continue;
+}
+
 void menu(const char* const menu[], size_t size)
 {
 	for (size_t i = 0; i < size; i++)
@@ -155,4 +145,24 @@ void menu(const char* const menu[], size_t size)
 			std::cout << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+void pause(clock_t seconds)
+{
+	clock_t start = clock();
+	while (clock() - start <
+		seconds * CLOCKS_PER_SEC)
+		continue;
+	system("pause");
+	system("cls");
+}
+
+void visit_auto_shop(AutoShop& shop)
+{
+	while (!shop.customer_is_out())
+	{
+		shop.take_request();
+		shop.fulfill_request();
+	}
+	shop.propose_catalog();
 }
