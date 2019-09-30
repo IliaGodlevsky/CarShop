@@ -4,9 +4,11 @@
 #define FUNCT_H_
 
 #include <ctime>
+#include <fstream>
 
 #include "AutoShop.h"
 #include "Constants.h"
+
 
 using Strings = std::vector<std::string>;
 
@@ -18,7 +20,13 @@ unsigned linear(unsigned b = 0,
 	unsigned x = std::rand() % VARIABLE);
 void eatline(std::istream& is);
 void pause(clock_t seconds = 0);
-Strings load_lines(std::string filename);
+
+// file functions
+Strings load_file(std::string filename);
+void file_opening(std::ifstream& is,
+	std::string filename);
+Strings file_reading(std::ifstream& is);
+
 void show_car(std::ostream& os, 
 	const Car& car, unsigned index);
 void show_cars(std::ostream& os,

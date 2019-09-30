@@ -1,5 +1,3 @@
-#include <iostream>
-#include <fstream>
 #include <algorithm>
 
 #include "Functions.h"
@@ -34,17 +32,34 @@ std::string input(const char* msg)
 	return choice;
 }
 
-Strings load_lines(std::string filename)
+Strings load_file(std::string filename)
+{
+	std::ifstream fin;
+	file_opening(fin, filename);
+	return file_reading(fin);
+}
+
+void file_opening(std::ifstream& is,
+	std::string filename)
+{
+	is.open(filename);
+	while (!is.is_open())
+	{
+		filename = input(file_msg);
+		is.open(filename);
+	}
+}
+
+Strings file_reading(std::ifstream& is)
 {
 	Strings names;
 	std::string name;
-	std::ifstream fin(filename);
-	while (!fin.eof())
+	while (!is.eof())
 	{
-		std::getline(fin, name);
+		std::getline(is, name);
 		names.push_back(name);
 	}
-	fin.close();
+	is.close();
 	return names;
 }
 
@@ -74,7 +89,7 @@ void pause(clock_t seconds)
 
 Car rand_car()
 {
-	static Strings names = load_lines(filename);
+	static Strings names = load_file(filename);
 	std::string name = names[rand() % names.size()];
 	unsigned year = linear(YEAR_ADD);
 	unsigned cost = linear(COST_MULT, COST_MULT);

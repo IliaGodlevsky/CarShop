@@ -23,6 +23,7 @@ const char* const year_msg = "Enter year: ";
 const char* const power_msg = "Enter power: ";
 const char* const name_msg = "Enter name: ";
 const char* const cost_msg = "Enter cost: ";
+const char* const file_msg = "Enter file name: ";
 const char* const sort_msg = "Choose sort option: ";
 const char* const find_msg = "Choose find option: ";
 const char* const sell_msg = "Choose car number: ";
