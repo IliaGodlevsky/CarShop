@@ -36,6 +36,8 @@ const char* const calalog_answer = "Do you want to get our "
 "car catalog (1 - Yes, 0 - No): ";
 const char* const catalog_msg = "You can find your "
 "catalog in ";
+const char* const pause = "pause";
+const char* const cls = "cls";
 
 // filenames
 const char* const filename = "Car names.txt";

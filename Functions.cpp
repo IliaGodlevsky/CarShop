@@ -147,14 +147,19 @@ void menu(const char* const menu[], size_t size)
 	std::cout << std::endl;
 }
 
-void pause(clock_t seconds)
+void wait(clock_t seconds)
 {
 	clock_t start = clock();
 	while (clock() - start <
 		seconds * CLOCKS_PER_SEC)
 		continue;
-	system("pause");
-	system("cls");
+	system({ pause, cls });
+}
+
+void system(Commands commands)
+{
+	for (auto& command : commands)
+		system(command);
 }
 
 void visit_auto_shop(AutoShop& shop)

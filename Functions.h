@@ -10,6 +10,7 @@
 #include "Constants.h"
 
 using Strings = std::vector<std::string>;
+using Commands = std::vector<const char*>;
 
 // generating functions
 Car rand_car();
@@ -44,7 +45,8 @@ bool error(unsigned choice,
 void eatline(std::istream& is);
 void menu(const char* const menu[],
 	size_t size);
-void pause(clock_t seconds = 0);
+void wait(clock_t seconds = 0);
+void system(Commands commands);
 
 void visit_auto_shop(AutoShop& shop);
 #endif

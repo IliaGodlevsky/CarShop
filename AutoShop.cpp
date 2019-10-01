@@ -183,7 +183,7 @@ void AutoShop::fulfill_request()
 	case SORT:  sort();	 break;
 	case FIND:  find();	 break;
 	}
-	pause();
+	wait();
 }
 
 void AutoShop::sort()
@@ -218,7 +218,7 @@ void AutoShop::propose_catalog()const
 			<< catalog << std::endl;
 		fout.close();
 	}
-	pause();
+	wait();
 }
 
 bool AutoShop::customer_is_out()const
