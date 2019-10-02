@@ -113,14 +113,14 @@ bool Seller::have_same_power(const Car& first, const Car& second)const
 void Seller::choose_sort_options()
 {
 	menu(seller_menu, SORT_OPTIONS);
-	to_compare = input(sort_msg, 
+	to_compare = (Request)input(sort_msg, 
 		POWER, NAME);
 }
 
 void Seller::choose_find_option()
 {
 	menu(seller_menu, FIND_OPTIONS);
-	to_find = input(find_msg, 
+	to_find = (Request)input(find_msg, 
 		EQUAL, NAME);
 }
 
@@ -169,7 +169,7 @@ void AutoShop::sell()
 void AutoShop::take_request()
 {
 	menu(shop_menu, SHOP_MENU_SIZE);
-	request = input(request_msg,
+	request = (Char)input(request_msg,
 		FIND, QUIT);
 }
 

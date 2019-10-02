@@ -62,16 +62,16 @@ private:
 	bool have_same_power(const Car& first, const Car& second)const;
 private:
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	enum { NAME = 1, COST, YEAR, POWER, EQUAL };
+	enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
 	static const unsigned SELLER_MENU_SIZE = EQUAL;
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "By name","By cost","By year","By power","By car" };
 private:
 	Compare compare[SORT_OPTIONS];
 	Compare find[FIND_OPTIONS];
-	unsigned to_compare; 
-	unsigned to_find;
 	Car car_to_find;
+	Request to_compare; 
+	Request to_find;
 };
 
 class AutoShop
@@ -97,12 +97,12 @@ private:
 	void find();
 private:
 	enum { NO, YES };
-	enum { QUIT, STOCK, SELL, SHOW, SORT, FIND };
+	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
 	static const unsigned SHOP_MENU_SIZE = FIND;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
 private:
-	unsigned request;
+	Char request;
 	Park cars;
 	Seller seller;
 };
