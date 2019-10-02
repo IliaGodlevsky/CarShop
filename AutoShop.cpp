@@ -55,6 +55,7 @@ Seller::Seller()
 	find[3] = &Seller::have_same_power;
 	find[4] = &Seller::are_same;
 }
+
 bool Seller::operator()(const Car& first, const Car& second)const
 {
 	return (this->*compare[to_compare - 1])(first, second);

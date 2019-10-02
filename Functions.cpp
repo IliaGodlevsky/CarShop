@@ -139,12 +139,12 @@ void menu(const char* const menu[], size_t size)
 	{
 		std::cout << i + 1
 			<< ". " << menu[i];
-		if (i % 2 == 0)
+		if (!fmod(i, 2))
 			std::cout << '\t';
-		if (i % 2 != 0 && i != size - 1)
-			std::cout << std::endl;
+		if (fmod(i, 2) && i != size - 1)
+			std::cout << '\n';
 	}
-	std::cout << std::endl;
+	std::cout << '\n';
 }
 
 void wait(clock_t seconds)
@@ -152,7 +152,7 @@ void wait(clock_t seconds)
 	clock_t start = clock();
 	while (clock() - start <
 		seconds * CLOCKS_PER_SEC)
-		continue;
+		pass
 	system({ pause, cls });
 }
 

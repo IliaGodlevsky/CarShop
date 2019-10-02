@@ -9,6 +9,8 @@
 #include "AutoShop.h"
 #include "Constants.h"
 
+#define pass ;
+
 using Strings = std::vector<std::string>;
 using Commands = std::vector<const char*>;
 
