@@ -1,4 +1,4 @@
-#include <algorithm>
+#include <cmath>
 
 #include "Functions.h"
 

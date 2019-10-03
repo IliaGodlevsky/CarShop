@@ -27,8 +27,14 @@ public:
 	friend std::ostream& operator <<
 		(std::ostream& os, const Car& car);
 	Car& input_car();
+	static void set_display(bool is_year, 
+		bool is_cost, bool is_power);
 	bool operator==(const Car& first)const;
 	~Car() {}
+private:
+	static bool is_year;
+	static bool is_cost;
+	static bool is_power;
 private:
 	std::string name;
 	unsigned year;
@@ -95,12 +101,17 @@ private:
 	void stock();
 	void sell();
 	void find();
+	void show_options()const;
 private:
 	enum { NO, YES };
 	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
+	enum Show { ALL = 1, YEAR, COST, POWER };
 	static const unsigned SHOP_MENU_SIZE = FIND;
+	static const unsigned SHOW_MENU_SIZE = 4;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
+	const char* const show_menu[SHOW_MENU_SIZE] =
+	{ "All","Year","Cost","Power" };
 private:
 	Char request;
 	Park cars;

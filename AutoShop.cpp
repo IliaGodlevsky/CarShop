@@ -6,6 +6,11 @@
 
 ///// CLASS CAR METHODS DEFINITIONS /////
 
+bool Car::is_year = false;
+bool Car::is_cost = false;
+bool Car::is_power = false;
+
+
 Car::Car() : name("Car"), year(MIN_YEAR),
 cost(MIN_COST), power(MIN_POWER) {}
 
@@ -17,9 +22,12 @@ Car::Car(const std::string& name, unsigned year,
 std::ostream& operator <<(std::ostream& os, const Car& car)
 {
 	os << "Name: " << car.name << std::endl;
-	os << "Year: " << car.year << std::endl;
-	os << "Cost: " << car.cost << " $\n";
-	os << "Power: " << car.power << " hp\n";
+	if (car.is_year)
+		os << "Year: " << car.year << std::endl;
+	if(car.is_cost)
+		os << "Cost: " << car.cost << " $\n";
+	if(car.is_power)
+		os << "Power: " << car.power << " hp\n";
 	return os;
 }
 
@@ -30,6 +38,14 @@ Car& Car::input_car()
 	power = input(power_msg, MAX_POWER, MIN_POWER);
 	cost = input(cost_msg, MAX_COST, MIN_COST);
 	return *this;
+}
+
+void Car::set_display(bool is_year_,
+	bool is_cost_, bool is_power_)
+{
+	is_year = is_year_;
+	is_cost = is_cost_;
+	is_power = is_power_;
 }
 
 bool Car::operator==(const Car& first)const
@@ -196,7 +212,33 @@ void AutoShop::sort()
 
 void AutoShop::show()const
 {
+	show_options();
 	show_cars(std::cout, cars);
+}
+
+void AutoShop::show_options()const
+{
+	bool is_year = false;
+	bool is_cost = false;
+	bool is_power = false;
+	Show show_mode = YEAR;
+	menu(show_menu, SHOW_MENU_SIZE);
+	while (show_mode != QUIT)
+	{
+		show_mode = (Show)input(show_msg, 
+			ALL, QUIT);
+		switch (show_mode)
+		{
+		case YEAR: is_year = true; break;
+		case COST: is_cost = true; break;
+		case POWER: is_power = true; break;
+		case ALL: is_year = is_power = 
+			is_cost = true; goto exit;
+		}
+	}
+	exit:
+	Car::set_display(is_year, 
+		is_cost, is_power);
 }
 
 void AutoShop::find()
@@ -214,6 +256,7 @@ void AutoShop::propose_catalog()const
 	if (YES == answer)
 	{
 		std::ofstream fout(catalog);
+		show_options();
 		show_cars(fout, cars);
 		std::cout << catalog_msg
 			<< catalog << std::endl;
