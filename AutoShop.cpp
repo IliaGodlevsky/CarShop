@@ -226,7 +226,7 @@ void AutoShop::show_options()const
 	while (show_mode != QUIT)
 	{
 		show_mode = (Show)input(show_msg, 
-			ALL, QUIT);
+			POWER, QUIT);
 		switch (show_mode)
 		{
 		case YEAR: is_year = true; break;

@@ -107,7 +107,7 @@ private:
 	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
 	enum Show { ALL = 1, YEAR, COST, POWER };
 	static const unsigned SHOP_MENU_SIZE = FIND;
-	static const unsigned SHOW_MENU_SIZE = 4;
+	static const unsigned SHOW_MENU_SIZE = POWER;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
 	const char* const show_menu[SHOW_MENU_SIZE] =
