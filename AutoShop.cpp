@@ -26,9 +26,12 @@ std::ostream& operator <<(std::ostream& os, const Car& car)
 Car& Car::input_car()
 {
 	name = input(name_msg);
-	year = input(year_msg, MAX_YEAR, MIN_YEAR);
-	power = input(power_msg, MAX_POWER, MIN_POWER);
-	cost = input(cost_msg, MAX_COST, MIN_COST);
+	year = input(year_msg, 
+		MAX_YEAR, MIN_YEAR);
+	power = input(power_msg, 
+		MAX_POWER, MIN_POWER);
+	cost = input(cost_msg, 
+		MAX_COST, MIN_COST);
 	return *this;
 }
 
