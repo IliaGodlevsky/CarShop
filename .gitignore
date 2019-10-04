@@ -350,3 +350,4 @@ MigrationBackup
 /
 Catalog.txt
 CarShop.vcxproj
+*.sln
