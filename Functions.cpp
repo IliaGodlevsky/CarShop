@@ -4,7 +4,7 @@
 
 Car rand_car()
 {
-	static Strings names = load_file(filename);
+	static Strings names = load_file(car_names);
 	std::string name = names[rand() % names.size()];
 	unsigned year = linear(YEAR_ADD);
 	unsigned cost = linear(COST_MULT, COST_MULT);
@@ -59,6 +59,7 @@ void show_file(std::string filename)
 {
 	Strings file
 		= load_file(filename);
+	std::cout << filename << std::endl;
 	for (auto& line : file)
 		std::cout << line << std::endl;
 	wait();
@@ -151,9 +152,9 @@ void menu(const char* const menu[], size_t size)
 		if (!fmod(i, 2))
 			std::cout << '\t';
 		if (fmod(i, 2) && i != size - 1)
-			std::cout << '\n';
+			std::cout << std::endl;
 	}
-	std::cout << '\n';
+	std::cout << std::endl;
 }
 
 void wait(clock_t seconds)
