@@ -10,7 +10,6 @@
 #include "Constants.h"
 
 using Strings = std::vector<std::string>;
-using Commands = std::initializer_list<const char*>;
 
 // generating functions
 Car rand_car();
