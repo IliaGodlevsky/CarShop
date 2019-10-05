@@ -44,6 +44,5 @@ const char* const cls = "cls";
 // filenames
 const char* const car_names = "Car names.txt";
 const char* const catalog = "Catalog.txt";
-const char* const specification = "Specification.txt";
 const char* const readme = "README.md";
 #endif
