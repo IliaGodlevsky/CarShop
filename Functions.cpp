@@ -55,6 +55,15 @@ Strings file_reading(std::ifstream& is)
 	return names;
 }
 
+void show_file(std::string filename)
+{
+	Strings file
+		= load_file(filename);
+	for (auto& line : file)
+		std::cout << line << std::endl;
+	wait();
+}
+
 void show_car(std::ostream& os,
 	const Car& car,
 	unsigned index)
@@ -153,7 +162,7 @@ void wait(clock_t seconds)
 	while (clock() - start <
 		seconds * CLOCKS_PER_SEC)
 		continue;
-	system(COMMANDS, pause, cls);
+	system(CMNDS, pause, cls);
 }
 
 void system(size_t cmnds,

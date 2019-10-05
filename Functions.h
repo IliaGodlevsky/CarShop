@@ -25,6 +25,7 @@ Strings load_file(std::string filename);
 void file_opening(std::ifstream& is,
 	std::string filename);
 Strings file_reading(std::ifstream& is);
+void show_file(std::string filename);
 
 // output functions
 void show_car(std::ostream& os, 

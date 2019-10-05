@@ -3,7 +3,7 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-const unsigned COMMANDS = 2;
+const unsigned CMNDS = 2;
 
 // linear function constants
 enum {
@@ -16,7 +16,7 @@ enum {
 
 // range constants
 enum {
-	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 25,
+	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 1000,
 	MIN_YEAR = 1991, MAX_YEAR = 2019,
 	MIN_COST = 1000, MAX_COST = 1000000,
 	MIN_POWER = 50, MAX_POWER = 300
@@ -44,4 +44,5 @@ const char* const cls = "cls";
 // filenames
 const char* const filename = "Car names.txt";
 const char* const catalog = "Catalog.txt";
+const char* const specification = "Specification.txt";
 #endif

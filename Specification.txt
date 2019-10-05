@@ -1,22 +1,21 @@
-﻿Спецификация:
-Класс Car - класс, который содержит информацию о машине.
+Class Car - object, that contains data about car.
 
-Класс Seller - функтор, который является дружественным классом по отношнеию к классу Car. 
-Класс Seller содержит методы для сравнения как машин целиком, так и отдельных параметров авто.
-Сожержит методы для организации поиска авто по параметрам, а также методы для организации сортировки авто.
+class Seller - functor, that is friend class to class Car. 
+class Seller has methods for car comparison as totally, and individual parameters.
+Has methods for organization of searching cars by parametres, also has methods for organization of sorting cars.
 
-Класс AutoShop - непосредственно сам автосалон. Содержит в себе продавца, а так же вектор из автомобилей.
-Позволяет:
- - отсортировать авто, 
- - найти определенную машину или машины по определенному параметру, 
- - просмотреть информацию обо всех автомобилях,
- - записать информацию обо всех автомобилях в файл (создать каталог о автомобилях),
- - удалить любой автомобиль из вектора,
- - добавить любое авто в вектор.
+Class AutoShop - Car shop by itself. Contains a seller, and a vector of cars.
+Can:
+ - sort cars, 
+ - find a car or cars by parametres, 
+ - look info about all cars,
+ - write info about cars in a file (create a catalog),
+ - delete any car from the vector,
+ - add any car to the vector.
 
-В программе используются атгоритмы, контейнеры, функторы, 
-указатели на методы класса и указатели на функции.
+In the program are used: algorithms, containers,functors,
+pointer to methods, pointers to functions and more
 
-Алгоритмы, используемые в программе:
+Algorithms are used in the program:
  - std::sort,
  - std::generate.
