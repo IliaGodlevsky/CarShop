@@ -3,6 +3,8 @@
 #ifndef CONST_H_
 #define CONST_H_
 
+const unsigned COMMANDS = 2;
+
 // linear function constants
 enum {
 	VARIABLE = 29,

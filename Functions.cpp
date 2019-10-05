@@ -152,14 +152,16 @@ void wait(clock_t seconds)
 	clock_t start = clock();
 	while (clock() - start <
 		seconds * CLOCKS_PER_SEC)
-		pass
-	system({ pause, cls });
+		continue;
+	system(COMMANDS, pause, cls);
 }
 
-void system(Commands commands)
+void system(size_t cmnds,
+	const char* first...)
 {
-	for (auto& command : commands)
-		system(command);
+	const char** pointer = &first;
+	for (size_t i = 0; i < cmnds; i++)
+		system(*(pointer + i));
 }
 
 void visit_auto_shop(AutoShop& shop)

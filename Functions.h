@@ -9,10 +9,8 @@
 #include "AutoShop.h"
 #include "Constants.h"
 
-#define pass ;
-
 using Strings = std::vector<std::string>;
-using Commands = std::vector<const char*>;
+using Commands = std::initializer_list<const char*>;
 
 // generating functions
 Car rand_car();
@@ -48,7 +46,8 @@ void eatline(std::istream& is);
 void menu(const char* const menu[],
 	size_t size);
 void wait(clock_t seconds = 0);
-void system(Commands commands);
+void system(size_t cmnds, 
+	const char* first...);
 
 void visit_auto_shop(AutoShop& shop);
 #endif
