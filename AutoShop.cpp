@@ -133,7 +133,8 @@ void Seller::find_request()
 	switch (to_find)
 	{
 	case NAME:
-		car_to_find.name = input(name_msg); break;
+		car_to_find.name = input(name_msg); 
+		break;
 	case YEAR:
 		car_to_find.year = input(year_msg,
 			MAX_YEAR, MIN_YEAR); break;
