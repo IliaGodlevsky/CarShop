@@ -217,7 +217,8 @@ void AutoShop::propose_catalog()const
 		input(calalog_answer, YES, NO);
 	if (YES == answer)
 	{
-		std::ofstream fout(catalog);
+		std::ofstream fout;
+		file_opening(fout, catalog);
 		show_cars(fout, cars);
 		std::cout << catalog_msg
 			<< catalog << std::endl;

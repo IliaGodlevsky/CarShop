@@ -5,7 +5,6 @@
 int main()
 {
 	srand(unsigned(time(nullptr)));
-	show_file(readme);
 	size_t shop_size = input(shop_msg, 
 		MAX_SHOP_SIZE, MIN_SHOP_SIZE);
 	AutoShop shop(shop_size, rand_car);

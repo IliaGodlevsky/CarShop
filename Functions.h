@@ -22,10 +22,10 @@ unsigned linear(unsigned b = 0,
 
 // file functions
 Strings load_file(std::string filename);
-void file_opening(std::ifstream& is,
+template <typename Stream>
+void file_opening(Stream& stream,
 	std::string filename);
 Strings file_reading(std::ifstream& is);
-void show_file(std::string filename);
 
 // output functions
 void show_car(std::ostream& os, 
@@ -50,4 +50,13 @@ void system(size_t cmnds,
 	const char* first...);
 
 void visit_auto_shop(AutoShop& shop);
+
+template <typename Stream>
+void file_opening(Stream& stream,
+	std::string filename)
+{
+	stream.open(filename);
+	while (!stream.is_open())
+		stream.open(input(file_msg));
+}
 #endif

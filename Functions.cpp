@@ -31,17 +31,6 @@ Strings load_file(std::string filename)
 	return file_reading(fin);
 }
 
-void file_opening(std::ifstream& is,
-	std::string filename)
-{
-	is.open(filename);
-	while (!is.is_open())
-	{
-		filename = input(file_msg);
-		is.open(filename);
-	}
-}
-
 Strings file_reading(std::ifstream& is)
 {
 	Strings names;
@@ -53,16 +42,6 @@ Strings file_reading(std::ifstream& is)
 	}
 	is.close();
 	return names;
-}
-
-void show_file(std::string filename)
-{
-	Strings file
-		= load_file(filename);
-	std::cout << filename << std::endl;
-	for (auto& line : file)
-		std::cout << line << std::endl;
-	wait();
 }
 
 void show_car(std::ostream& os,
