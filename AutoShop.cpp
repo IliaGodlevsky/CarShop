@@ -213,7 +213,7 @@ void AutoShop::find()
 
 void AutoShop::propose_catalog()const
 {
-	unsigned answer =
+	const bool answer =
 		input(calalog_answer, YES, NO);
 	if (YES == answer)
 	{
