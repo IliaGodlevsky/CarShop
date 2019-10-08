@@ -165,10 +165,15 @@ void AutoShop::stock()
 
 void AutoShop::sell()
 {
-	show();
-	unsigned to_sell = input(sell_msg,
-		cars.size(), 1U) - 1U;
-	cars.erase(cars.begin() + to_sell);
+	if (!cars.empty())
+	{
+		show_cars(std::cout, cars);
+		unsigned to_sell = input(sell_msg,
+			cars.size(), 1U) - 1U;
+		cars.erase(cars.begin() + to_sell);
+	}
+	else
+		std::cout << empty_msg;
 }
 
 void AutoShop::take_request()

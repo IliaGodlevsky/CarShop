@@ -36,6 +36,7 @@ const char* const shop_msg = "Enter shop size: ";
 const char* const request_msg = "Choose option (0 to quit): ";
 const char* const calalog_answer = "Do you want to get our "
 "car catalog (1 - Yes, 0 - No): ";
+const char* const empty_msg = "\aThere is no any car in autoshop!\n";
 const char* const catalog_msg = "You can find your "
 "catalog in ";
 const char* const pause = "pause";
