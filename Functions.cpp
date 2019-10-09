@@ -92,17 +92,29 @@ bool show_cars(std::ostream&os,
 	return count;
 }
 
+void input(const char* msg,
+	unsigned& value)
+{
+	std::cout << msg;
+	std::cin >> value;
+}
+
+void input(const char* msg,
+	std::string& line)
+{
+	std::cout << msg;
+	std::getline(std::cin, line);
+}
+
 unsigned input(const char* msg,
 	unsigned up, unsigned down)
 {
 	unsigned choice;
-	std::cout << msg;
-	std::cin >> choice;
+	input(msg, choice);
 	while (error(choice, up, down))
 	{
 		eatline(std::cin);
-		std::cout << msg;
-		std::cin >> choice;
+		input(msg, choice);
 	}
 	eatline(std::cin);
 	return choice;
@@ -111,13 +123,11 @@ unsigned input(const char* msg,
 std::string input(const char* msg)
 {
 	std::string choice;
-	std::cout << msg;
-	std::getline(std::cin, choice);
+	input(msg, choice);
 	while (std::cin.fail())
 	{
 		eatline(std::cin);
-		std::cout << msg;
-		std::getline(std::cin, choice);
+		input(msg, choice);
 	}
 	return choice;
 }

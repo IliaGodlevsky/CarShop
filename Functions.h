@@ -39,6 +39,10 @@ bool show_cars(std::ostream& os,
 	const Seller& seller);
 
 // input functions
+void input(const char* msg,
+	unsigned& value);
+void input(const char* msg,
+	std::string& line);
 unsigned input(const char* msg,
 	unsigned up, unsigned  down);
 std::string input(const char* msg);

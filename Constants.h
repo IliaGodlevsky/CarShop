@@ -3,7 +3,7 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-const unsigned CMNDS = 2;
+constexpr unsigned CMNDS = 2;
 
 // linear function constants
 enum {
@@ -23,7 +23,7 @@ enum {
 };
 
 // message constants
-const char* const not_found = "Nothing was found\n";
+const char* const not_found = "\aNothing was found\n";
 const char* const year_msg = "Enter year: ";
 const char* const power_msg = "Enter power: ";
 const char* const name_msg = "Enter name: ";
@@ -40,11 +40,12 @@ const char* const empty_msg = "\aThere is no any car in autoshop!\n";
 const char* const add_msg = "How do you want to add a car?: ";
 const char* const catalog_msg = "You can find your "
 "catalog in ";
+
+// system commands
 const char* const pause = "pause";
 const char* const cls = "cls";
 
 // filenames
 const char* const car_names = "Car names.txt";
 const char* const catalog = "Catalog.txt";
-const char* const readme = "README.md";
 #endif

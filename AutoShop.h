@@ -63,7 +63,7 @@ private:
 private:
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
 	enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
-	static const unsigned SELLER_MENU_SIZE = EQUAL;
+	static constexpr unsigned SELLER_MENU_SIZE = EQUAL;
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "By name","By cost","By year","By power","By car" };
 private:
@@ -97,7 +97,7 @@ private:
 private:
 	enum { NO, YES };
 	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
-	static const unsigned SHOP_MENU_SIZE = FIND;
+	static constexpr unsigned SHOP_MENU_SIZE = FIND;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
 private:
