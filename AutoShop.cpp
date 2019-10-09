@@ -156,11 +156,16 @@ AutoShop::AutoShop(size_t size, Plant car_gen)
 {
 	std::generate(cars.begin(),
 		cars.end(), car_gen);
+	generators[0] = rand_car;
+	generators[1] = defined_car;
 }
 
 void AutoShop::stock()
 {
-	cars.push_back(defined_car());
+	menu(gen_menu, GENERATORS);
+	unsigned add = input(add_msg,
+		DEFINED, RAND) - 1U;
+	cars.push_back(generators[add]());
 }
 
 void AutoShop::sell()
@@ -181,6 +186,7 @@ void AutoShop::take_request()
 	menu(shop_menu, SHOP_MENU_SIZE);
 	request = (Char)input(request_msg,
 		FIND, QUIT);
+	system(cls);
 }
 
 void AutoShop::fulfill_request()
