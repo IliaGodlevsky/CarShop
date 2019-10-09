@@ -17,6 +17,20 @@ Car defined_car()
 	return Car().input_car();
 }
 
+Plant choose_plant()
+{
+	enum { RAND = 1, DEFINED };
+	const unsigned GENERATORS = 2;
+	Plant generators[GENERATORS]
+	{ rand_car,defined_car };
+	const char* gen_menu[GENERATORS] 
+		= { "Random","Defined" };
+	menu(gen_menu, GENERATORS);
+	unsigned plant = input(add_msg, 
+		DEFINED, RAND);
+	return generators[plant - 1];
+}
+
 inline unsigned linear(unsigned b,
 	unsigned a,
 	unsigned x)

@@ -156,16 +156,11 @@ AutoShop::AutoShop(size_t size, Plant car_gen)
 {
 	std::generate(cars.begin(),
 		cars.end(), car_gen);
-	generators[0] = rand_car;
-	generators[1] = defined_car;
 }
 
 void AutoShop::stock()
 {
-	menu(gen_menu, GENERATORS);
-	unsigned add = input(add_msg,
-		DEFINED, RAND) - 1U;
-	cars.push_back(generators[add]());
+	cars.push_back(choose_plant()());
 }
 
 void AutoShop::sell()
@@ -186,7 +181,8 @@ void AutoShop::take_request()
 	menu(shop_menu, SHOP_MENU_SIZE);
 	request = (Char)input(request_msg,
 		FIND, QUIT);
-	system(cls);
+	if (request > QUIT)
+		system(cls);
 }
 
 void AutoShop::fulfill_request()
@@ -204,6 +200,7 @@ void AutoShop::fulfill_request()
 
 void AutoShop::sort()
 {
+	Seller seller;
 	seller.choose_sort_options();
 	std::sort(cars.begin(),
 		cars.end(), seller);
@@ -214,8 +211,9 @@ void AutoShop::show()const
 	show_cars(std::cout, cars);
 }
 
-void AutoShop::find()
+void AutoShop::find()const
 {
+	Seller seller;
 	seller.choose_find_option();
 	seller.find_request();
 	if (!show_cars(std::cout, cars, seller))

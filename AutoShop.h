@@ -93,21 +93,15 @@ private:
 	void sort();
 	void stock();
 	void sell();
-	void find();
+	void find()const;
 private:
 	enum { NO, YES };
-	enum { RAND = 1, DEFINED };
 	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
 	static const unsigned SHOP_MENU_SIZE = FIND;
-	static const unsigned GENERATORS = 2;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
-	const char* const gen_menu[GENERATORS] = 
-	{ "Random","Defined" };
 private:
-	Plant generators[GENERATORS];
 	Char request;
 	Park cars;
-	Seller seller;
 };
 #endif
