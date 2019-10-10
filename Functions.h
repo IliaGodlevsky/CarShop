@@ -15,7 +15,7 @@ using Strings = std::vector<std::string>;
 Car rand_car();
 Car defined_car();
 
-Plant choose_plant();
+Plant plant();
 
 // linear function
 unsigned linear(unsigned b = 0,

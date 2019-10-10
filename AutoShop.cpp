@@ -160,7 +160,7 @@ AutoShop::AutoShop(size_t size, Plant car_gen)
 
 void AutoShop::stock()
 {
-	cars.push_back(choose_plant()());
+	cars.push_back(plant()());
 }
 
 void AutoShop::sell()

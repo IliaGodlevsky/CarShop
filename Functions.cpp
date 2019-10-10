@@ -17,7 +17,7 @@ Car defined_car()
 	return Car().input_car();
 }
 
-Plant choose_plant()
+Plant plant()
 {
 	enum { RAND = 1, DEFINED };
 	const unsigned GENERATORS = 2;
