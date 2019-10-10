@@ -5,11 +5,13 @@
 
 #include <ctime>
 #include <fstream>
+#include <random>
 
 #include "AutoShop.h"
 #include "Constants.h"
 
 using Strings = std::vector<std::string>;
+using Random = std::uniform_int_distribution<unsigned>;
 
 // generating functions
 Car rand_car();
@@ -17,10 +19,12 @@ Car defined_car();
 
 Plant plant();
 
-// linear function
+// random number generators
+unsigned random(unsigned max,
+	unsigned min = 0);
 unsigned linear(unsigned b = 0,
 	unsigned a = 1,
-	unsigned x = std::rand() % VARIABLE);
+	unsigned x = random(VARIABLE));
 
 // file functions
 Strings load_file(std::string filename);

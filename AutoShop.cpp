@@ -172,8 +172,7 @@ void AutoShop::sell()
 			cars.size(), 1U) - 1U;
 		cars.erase(cars.begin() + to_sell);
 	}
-	else
-		std::cout << empty_msg;
+	else std::cout << empty_msg;
 }
 
 void AutoShop::take_request()
@@ -181,8 +180,7 @@ void AutoShop::take_request()
 	menu(shop_menu, SHOP_MENU_SIZE);
 	request = (Char)input(request_msg,
 		FIND, QUIT);
-	if (request > QUIT)
-		system(cls);
+	if (request > QUIT) system(cls);
 }
 
 void AutoShop::fulfill_request()

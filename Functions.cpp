@@ -5,7 +5,7 @@
 Car rand_car()
 {
 	static Strings names = load_file(car_names);
-	std::string name = names[rand() % names.size()];
+	std::string name = names[random(names.size() - 1)];;
 	unsigned year = linear(YEAR_ADD);
 	unsigned cost = linear(COST_MULT, COST_MULT);
 	unsigned power = linear(POW_ADD, POW_MULT);
@@ -29,6 +29,14 @@ Plant plant()
 	unsigned plant = input(add_msg, 
 		DEFINED, RAND);
 	return generators[plant - 1];
+}
+
+unsigned random(unsigned max,
+	unsigned min)
+{
+	static std::random_device rd;
+	static std::mt19937 eng(rd());
+	return Random(min, max)(eng);
 }
 
 inline unsigned linear(unsigned b,
@@ -162,9 +170,9 @@ void wait(clock_t seconds)
 void system(size_t cmnds,
 	const char* first...)
 {
-	const char** pointer = &first;
+	const char** command = &first;
 	for (size_t i = 0; i < cmnds; i++)
-		system(*(pointer + i));
+		system(*(command + i));
 }
 
 void visit_auto_shop(AutoShop& shop)

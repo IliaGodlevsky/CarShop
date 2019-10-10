@@ -7,7 +7,7 @@ constexpr unsigned CMNDS = 2;
 
 // linear function constants
 enum {
-	VARIABLE = 29,
+	VARIABLE = 28,
 	YEAR_ADD = 1991,
 	COST_MULT = 1000,
 	POW_MULT = 5,
