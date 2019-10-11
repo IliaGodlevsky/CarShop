@@ -3,11 +3,10 @@
 #ifndef CONST_H_
 #define CONST_H_
 
-constexpr unsigned CMNDS = 2;
-
-// linear function constants
-enum {
-	VARIABLE = 28,
+enum 
+{
+	CMNDS = 2,	// numbers of commands used in program
+	VARIABLE = 28, // linear x
 	YEAR_ADD = 1991,
 	COST_MULT = 1000,
 	POW_MULT = 5,
@@ -15,8 +14,9 @@ enum {
 };
 
 // range constants
-enum {
-	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 1000,
+enum 
+{
+	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 30,
 	MIN_YEAR = 1991, MAX_YEAR = 2019,
 	MIN_COST = 1000, MAX_COST = 1000000,
 	MIN_POWER = 50, MAX_POWER = 300

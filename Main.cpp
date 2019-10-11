@@ -2,7 +2,7 @@
 #include "Constants.h"
 #include "AutoShop.h"
 
-int main()
+int main(int args, char* argv[])
 {
 	size_t shop_size = input(shop_msg,
 		MAX_SHOP_SIZE, MIN_SHOP_SIZE);

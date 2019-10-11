@@ -34,8 +34,9 @@ Plant plant()
 unsigned random(unsigned max,
 	unsigned min)
 {
-	static std::random_device rd;
-	static std::mt19937 eng(rd());
+	std::random_device seed;
+	std::mt19937 eng(seed());
+	// [min, max]
 	return Random(min, max)(eng);
 }
 
@@ -86,18 +87,14 @@ bool show_cars(std::ostream&os,
 	const Park& cars,
 	const Seller& seller)
 {
-	unsigned i = 1;
-	unsigned count = 0;
+	unsigned i = 0;
 	for (auto& car : cars)
 	{
-		if (seller(car))
-		{
-			show_car(os, car, i);
-			count++;
-		}
 		i++;
+		if (seller(car))
+			show_car(os, car, i);
 	}
-	return count;
+	return i != cars.size();
 }
 
 unsigned input(const char* msg,
