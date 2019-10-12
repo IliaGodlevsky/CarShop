@@ -67,40 +67,6 @@ Strings file_reading(std::ifstream& is)
 	return names;
 }
 
-void show_car(std::ostream& os,
-	const Car& car,
-	unsigned index)
-{
-	os << "     " << index << std::endl
-		<< car << std::endl;
-}
-
-void show_cars(std::ostream& os,
-	const Park& cars)
-{
-	unsigned i = 0;
-	for (auto& car : cars)
-		show_car(os, car, ++i);
-}
-
-bool show_cars(std::ostream&os,
-	const Park& cars,
-	const Seller& seller)
-{
-	unsigned i = 0;
-	unsigned count = 0;
-	for (auto& car : cars)
-	{
-		i++;
-		if (seller(car))
-		{
-			show_car(os, car, i);
-			count++;
-		}
-	}
-	return count;
-}
-
 unsigned input(const char* msg,
 	unsigned up, unsigned down)
 {

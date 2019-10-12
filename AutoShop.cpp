@@ -3,6 +3,8 @@
 
 #include "Functions.h"
 #include "Constants.h"
+#include "Functor.h"
+#include "View.h"
 
 ///// CLASS CAR METHODS DEFINITIONS /////
 
@@ -44,111 +46,6 @@ bool Car::operator==(const Car& first)const
 		power == first.power;
 }
 
-///// CLASS SELLER METHODS DEFINITIONS /////
-
-Seller::Seller()
-{
-	compare[0] = &Seller::is_less_name;
-	compare[1] = &Seller::is_less_cost;
-	compare[2] = &Seller::is_greater_year;
-	compare[3] = &Seller::is_greater_power;
-	find[0] = &Seller::have_same_name;
-	find[1] = &Seller::have_same_cost;
-	find[2] = &Seller::have_same_year;
-	find[3] = &Seller::have_same_power;
-	find[4] = &Seller::are_same;
-}
-
-bool Seller::operator()(const Car& first, const Car& second)const
-{
-	return (this->*compare[to_compare - 1])(first, second);
-}
-
-bool Seller::is_less_name(const Car& first, const Car& second)const
-{
-	return first.name < second.name;
-}
-
-bool Seller::is_less_cost(const Car& first, const Car& second)const
-{
-	return first.cost < second.cost;
-}
-
-bool Seller::is_greater_year(const Car& first, const Car& second)const
-{
-	return first.year > second.year;
-}
-
-bool Seller::is_greater_power(const Car& first, const Car& second)const
-{
-	return first.power > second.power;
-}
-
-bool Seller::operator()(const Car& first)const
-{
-	return (this->*find[to_find - 1])(first, car_to_find);
-}
-
-bool Seller::are_same(const Car& first, const Car& second)const
-{
-	return first == second;
-}
-
-bool Seller::have_same_name(const Car& first, const Car& second)const
-{
-	return first.name == second.name;
-}
-
-bool Seller::have_same_cost(const Car& first, const Car& second)const
-{
-	return first.cost == second.cost;
-}
-
-bool Seller::have_same_year(const Car& first, const Car& second)const
-{
-	return first.year == second.year;
-}
-
-bool Seller::have_same_power(const Car& first, const Car& second)const
-{
-	return first.power == second.power;
-}
-
-void Seller::choose_sort_options()
-{
-	menu(seller_menu, SORT_OPTIONS);
-	to_compare = (Request)input(sort_msg, 
-		POWER, NAME);
-}
-
-void Seller::choose_find_option()
-{
-	menu(seller_menu, FIND_OPTIONS);
-	to_find = (Request)input(find_msg, 
-		EQUAL, NAME);
-}
-
-void Seller::find_request()
-{
-	switch (to_find)
-	{
-	case NAME:
-		car_to_find.name = input(name_msg); 
-		break;
-	case YEAR:
-		car_to_find.year = input(year_msg,
-			MAX_YEAR, MIN_YEAR); break;
-	case COST:
-		car_to_find.cost = input(cost_msg,
-			MAX_COST, MIN_COST); break;
-	case POWER:
-		car_to_find.power = input(power_msg,
-			MAX_POWER, MIN_POWER); break;
-	case EQUAL:
-		car_to_find.input_car(); break;
-	}
-}
-
 ///// CLASS AUTOSHOP METHODS DEFINITIONS /////
 
 AutoShop::AutoShop(size_t size, Plant car_gen)
@@ -167,7 +64,9 @@ void AutoShop::sell()
 {
 	if (!cars.empty())
 	{
-		show_cars(std::cout, cars);
+		View view;
+		view.show_options();
+		view.show_cars(std::cout, cars);
 		unsigned to_sell = input(sell_msg,
 			cars.size(), 1U) - 1U;
 		cars.erase(cars.begin() + to_sell);
@@ -198,23 +97,25 @@ void AutoShop::fulfill_request()
 
 void AutoShop::sort()
 {
-	Seller seller;
-	seller.choose_sort_options();
+	Comparator compare;
+	compare.choose_options();
 	std::sort(cars.begin(),
-		cars.end(), seller);
+		cars.end(), compare);
 }
 
 void AutoShop::show()const
 {
-	show_cars(std::cout, cars);
+	View view;
+	view.show_options();
+	view.show_cars(std::cout, cars);
 }
 
 void AutoShop::find()const
 {
-	Seller seller;
-	seller.choose_find_option();
-	seller.find_request();
-	if (!show_cars(std::cout, cars, seller))
+	Finder finder;
+	View view((bool)NAME, bool(COST),
+		bool(YEAR), bool(POWER), bool(EQUAL));
+	if (!view.show_cars(std::cout, cars, finder))
 		std::cout << not_found;
 }
 
@@ -224,9 +125,11 @@ void AutoShop::propose_catalog()const
 		input(calalog_answer, YES, NO);
 	if (YES == answer)
 	{
+		View view;
+		view.show_options();
 		std::ofstream fout;
 		file_opening(fout, catalog);
-		show_cars(fout, cars);
+		view.show_cars(fout, cars);
 		std::cout << catalog_msg
 			<< catalog << std::endl;
 		fout.close();

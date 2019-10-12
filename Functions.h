@@ -9,6 +9,7 @@
 
 #include "AutoShop.h"
 #include "Constants.h"
+#include "Functor.h"
 
 using Strings = std::vector<std::string>;
 using Random = std::uniform_int_distribution<unsigned>;
@@ -32,15 +33,6 @@ template <typename Stream>
 void file_opening(Stream& stream,
 	std::string filename);
 Strings file_reading(std::ifstream& is);
-
-// output functions
-void show_car(std::ostream& os, 
-	const Car& car, unsigned index);
-void show_cars(std::ostream& os,
-	const Park& cars);
-bool show_cars(std::ostream& os,
-	const Park& cars,
-	const Seller& seller);
 
 // input functions
 unsigned input(const char* msg,

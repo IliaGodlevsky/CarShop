@@ -118,12 +118,16 @@
     <ClInclude Include="AutoShop.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="Functor.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoShop.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Functor.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Car names.txt" />

@@ -7,7 +7,11 @@
 #include <iostream>
 #include <string>
 
-class Seller;
+enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
+static constexpr unsigned MENU_SIZE = EQUAL;
+const char* const functor_menu[MENU_SIZE] =
+{ "By name","By cost","By year","By power","By car" };
+
 class Car;
 
 using Park = std::vector<Car>;
@@ -15,7 +19,9 @@ using Plant = Car(*)();
 
 class Car
 {
-	friend class Seller;
+	friend class Comparator;
+	friend class Finder;
+	friend class View;
 public:
 	Car();
 	Car(const std::string& name, unsigned year,
@@ -36,43 +42,6 @@ private:
 	unsigned power;
 };
 
-// Functor class Seller
-class Seller
-{
-public:
-	Seller();
-	bool operator()(const Car& first, const Car& second)const;
-	bool operator()(const Car& first)const;
-	void choose_sort_options();
-	void choose_find_option();
-	void find_request();
-private:
-	// Pointer to a METHOD
-	using Compare = bool(Seller::*)(const Car&, const Car&)const;
-	// Functions used to compare cars by one of the car's parametre
-	bool is_less_name(const Car& first, const Car& second)const;
-	bool is_less_cost(const Car& first, const Car& second)const;
-	bool is_greater_year(const Car& first, const Car& second)const;
-	bool is_greater_power(const Car& first, const Car& second)const;
-	// Functions used to find a car by one of the car's parametre
-	bool are_same(const Car& first, const Car& second)const;
-	bool have_same_name(const Car& first, const Car& second)const;
-	bool have_same_cost(const Car& first, const Car& second)const;
-	bool have_same_year(const Car& first, const Car& second)const;
-	bool have_same_power(const Car& first, const Car& second)const;
-private:
-	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
-	static constexpr unsigned SELLER_MENU_SIZE = EQUAL;
-	const char* const seller_menu[SELLER_MENU_SIZE] =
-	{ "By name","By cost","By year","By power","By car" };
-private:
-	Compare compare[SORT_OPTIONS];
-	Compare find[FIND_OPTIONS];
-	Car car_to_find;
-	Request to_compare; 
-	Request to_find;
-};
 
 class AutoShop
 {

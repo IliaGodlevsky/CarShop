@@ -33,6 +33,7 @@ const char* const sort_msg = "Choose sort option: ";
 const char* const find_msg = "Choose find option: ";
 const char* const sell_msg = "Choose car number: ";
 const char* const shop_msg = "Enter shop size: ";
+const char* const show_msg = "Choose chow options: ";
 const char* const request_msg = "Choose option (0 to quit): ";
 const char* const calalog_answer = "Do you want to get our "
 "car catalog (1 - Yes, 0 - No): ";
