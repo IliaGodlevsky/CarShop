@@ -118,6 +118,7 @@
     <ClInclude Include="AutoShop.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoShop.cpp" />
@@ -126,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Car names.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="car.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

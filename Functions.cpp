@@ -88,13 +88,17 @@ bool show_cars(std::ostream&os,
 	const Seller& seller)
 {
 	unsigned i = 0;
+	unsigned count = 0;
 	for (auto& car : cars)
 	{
 		i++;
 		if (seller(car))
+		{
 			show_car(os, car, i);
+			count++;
+		}
 	}
-	return i != cars.size();
+	return count;
 }
 
 unsigned input(const char* msg,
