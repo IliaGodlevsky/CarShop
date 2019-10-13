@@ -12,6 +12,7 @@ public:
 	virtual void choose_options() = 0;
 	virtual bool operator()(const Car& first,
 		const Car& second)const = 0;
+	virtual bool operator()(const Car& car)const = 0;
 };
 
 class Comparator : public Functor
@@ -29,6 +30,7 @@ private:
 	bool is_less_cost(const Car& first, const Car& second)const;
 	bool is_greater_year(const Car& first, const Car& second)const;
 	bool is_greater_power(const Car& first, const Car& second)const;
+	bool operator()(const Car& car)const;
 private:
 	enum { SORT_OPTIONS = 4 };
 	Compare compare[SORT_OPTIONS];

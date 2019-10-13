@@ -43,7 +43,7 @@ void View::show_cars(std::ostream& os,
 
 bool View::show_cars(std::ostream& os,
 	const Park& cars,
-	const Finder& seller)const
+	const Functor& seller)const
 {
 	unsigned i = 0;
 	unsigned count = 0;

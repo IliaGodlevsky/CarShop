@@ -41,6 +41,12 @@ bool Comparator::is_greater_power(const Car& first, const Car& second)const
 	return first.power > second.power;
 }
 
+bool Comparator::operator()(const Car& car)const
+{
+	return true;
+	// wtf!?
+}
+
 Finder::Finder()
 {
 	find[0] = &Finder::have_same_name;

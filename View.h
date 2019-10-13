@@ -19,7 +19,7 @@ public:
 		const Park& cars)const;
 	bool show_cars(std::ostream& os,
 		const Park& cars,
-		const Finder& seller)const;
+		const Functor& seller)const;
 private:
 	using States = std::vector<bool>;
 	using Show = void(View::*)(std::ostream&, const Car&)const;
