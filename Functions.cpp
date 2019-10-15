@@ -61,6 +61,11 @@ Strings file_reading(std::ifstream& is)
 	while (!is.eof())
 	{
 		std::getline(is, name);
+		while (!is && !is.eof())
+		{
+			eatline(is);
+			std::getline(is, name);
+		}
 		names.push_back(name);
 	}
 	is.close();
