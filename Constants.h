@@ -3,6 +3,8 @@
 #ifndef CONST_H_
 #define CONST_H_
 
+const unsigned QUIT = 0;
+
 enum 
 {
 	CMNDS = 2,	// numbers of commands used in program

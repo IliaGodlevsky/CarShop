@@ -48,7 +48,7 @@ unsigned input(const char* msg,
 std::string input(const char* msg);
 bool error(unsigned choice,
 	unsigned up, unsigned down);
-void eatline(std::istream& is);
+std::istream& eatline(std::istream& is);
 void menu(const char* const menu[],
 	size_t size);
 void wait(clock_t seconds = 0);

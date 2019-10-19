@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cassert>
 
 #include "Functions.h"
 
@@ -62,10 +63,7 @@ Strings file_reading(std::ifstream& is)
 	{
 		std::getline(is, name);
 		while (!is && !is.eof())
-		{
-			eatline(is);
-			std::getline(is, name);
-		}
+			std::getline(eatline(is), name);
 		names.push_back(name);
 	}
 	is.close();
@@ -143,11 +141,12 @@ bool error(unsigned choice,
 		choice > up || choice < down;
 }
 
-void eatline(std::istream& is)
+std::istream& eatline(std::istream& is)
 {
 	is.clear();
 	while (!iscntrl(is.get()))
 		continue;
+	return is;
 }
 
 void menu(const char* const menu[], size_t size)

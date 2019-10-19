@@ -65,7 +65,7 @@ private:
 	void find_request();
 private:
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	enum Request { QUIT, NAME, COST, YEAR, POWER, EQUAL };
+	enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
 	static constexpr unsigned SELLER_MENU_SIZE = EQUAL;
 	const char* const seller_menu[SELLER_MENU_SIZE] =
 	{ "Name","Cost","Year","Power","Car" };
@@ -101,7 +101,7 @@ private:
 	void find()const;
 private:
 	enum { NO, YES };
-	enum Char { QUIT, STOCK, SELL, SHOW, SORT, FIND };
+	enum Char { STOCK = 1, SELL, SHOW, SORT, FIND };
 	static constexpr unsigned SHOP_MENU_SIZE = FIND;
 	const char* const shop_menu[SHOP_MENU_SIZE] =
 	{ "Add","Sell","Show","Sort","Find" };
