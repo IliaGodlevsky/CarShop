@@ -46,7 +46,13 @@ bool Car::operator==(const Car& first)const
 
 ///// CLASS SELLER METHODS DEFINITIONS /////
 
-Seller::Seller()
+Seller::Seller() : Seller(Car())
+{
+
+}
+
+Seller::Seller(const Car& car) 
+	: car_to_find(car)
 {
 	compare[0] = &Seller::is_less_name;
 	compare[1] = &Seller::is_less_cost;

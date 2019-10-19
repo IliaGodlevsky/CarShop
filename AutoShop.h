@@ -41,6 +41,7 @@ class Seller
 {
 public:
 	Seller();
+	Seller(const Car& car);
 	bool operator()(const Car& first, const Car& second)const;
 	bool operator()(const Car& first)const;
 	void choose_sort_options();
