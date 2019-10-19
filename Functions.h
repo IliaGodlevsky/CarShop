@@ -52,7 +52,7 @@ void eatline(std::istream& is);
 void menu(const char* const menu[],
 	size_t size);
 void wait(clock_t seconds = 0);
-void system(size_t cmnds, 
+void system(const size_t cmnds, 
 	const char* first...);
 
 void visit_auto_shop(AutoShop& shop);

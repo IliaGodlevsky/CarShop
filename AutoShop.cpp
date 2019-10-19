@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <fstream>
+#include <valarray>
 
 #include "Functions.h"
 #include "Constants.h"
@@ -51,18 +52,25 @@ Seller::Seller() : Seller(Car())
 
 }
 
-Seller::Seller(const Car& car) 
-	: car_to_find(car)
+Seller::Seller(const Car& car)
+	: car_to_find(car),
+	compare
+	{
+	&Seller::is_less_name,
+	&Seller::is_less_cost,
+	&Seller::is_greater_year,
+	&Seller::is_greater_power
+	},
+	find
+	{
+	&Seller::have_same_name,
+	&Seller::have_same_cost,
+	&Seller::have_same_year,
+	&Seller::have_same_power,
+	&Seller::are_same
+	}
 {
-	compare[0] = &Seller::is_less_name;
-	compare[1] = &Seller::is_less_cost;
-	compare[2] = &Seller::is_greater_year;
-	compare[3] = &Seller::is_greater_power;
-	find[0] = &Seller::have_same_name;
-	find[1] = &Seller::have_same_cost;
-	find[2] = &Seller::have_same_year;
-	find[3] = &Seller::have_same_power;
-	find[4] = &Seller::are_same;
+
 }
 
 bool Seller::operator()(const Car& first, const Car& second)const
@@ -90,9 +98,9 @@ bool Seller::is_greater_power(const Car& first, const Car& second)const
 	return first.power > second.power;
 }
 
-bool Seller::operator()(const Car& first)const
+bool Seller::operator()(const Car& car)const
 {
-	return (this->*find[to_find - 1])(first, car_to_find);
+	return count_coincidence(car) >= coincidence.size();
 }
 
 bool Seller::are_same(const Car& first, const Car& second)const
@@ -131,7 +139,14 @@ void Seller::choose_find_option()
 {
 	menu(seller_menu, FIND_OPTIONS);
 	to_find = (Request)input(find_msg, 
-		EQUAL, NAME);
+		EQUAL, QUIT);
+	while (to_find)
+	{
+		coincidence.push_back(find[to_find - 1]);
+		find_request();
+		to_find = (Request)input(find_msg,
+			EQUAL, QUIT);
+	}
 }
 
 void Seller::find_request()
@@ -153,6 +168,14 @@ void Seller::find_request()
 	case EQUAL:
 		car_to_find.input_car(); break;
 	}
+}
+
+unsigned Seller::count_coincidence(const Car& car)const
+{
+	unsigned founded = 0;
+	for (size_t i = 0; i < coincidence.size(); i++)
+		founded += (this->*coincidence[i])(car, car_to_find);
+	return founded;
 }
 
 ///// CLASS AUTOSHOP METHODS DEFINITIONS /////
@@ -219,7 +242,6 @@ void AutoShop::find()const
 {
 	Seller seller;
 	seller.choose_find_option();
-	seller.find_request();
 	if (!show_cars(std::cout, cars, seller))
 		std::cout << not_found;
 }

@@ -43,13 +43,13 @@ public:
 	Seller();
 	Seller(const Car& car);
 	bool operator()(const Car& first, const Car& second)const;
-	bool operator()(const Car& first)const;
+	bool operator()(const Car& car)const;
 	void choose_sort_options();
 	void choose_find_option();
-	void find_request();
 private:
 	// Pointer to a METHOD
 	using Compare = bool(Seller::*)(const Car&, const Car&)const;
+	using Coincidence = std::vector<Compare>;
 	// Functions used to compare cars by one of the car's parametre
 	bool is_less_name(const Car& first, const Car& second)const;
 	bool is_less_cost(const Car& first, const Car& second)const;
@@ -61,15 +61,19 @@ private:
 	bool have_same_cost(const Car& first, const Car& second)const;
 	bool have_same_year(const Car& first, const Car& second)const;
 	bool have_same_power(const Car& first, const Car& second)const;
+	unsigned count_coincidence(const Car& car)const;
+	void find_request();
 private:
 	enum { SORT_OPTIONS = 4, FIND_OPTIONS };
-	enum Request { NAME = 1, COST, YEAR, POWER, EQUAL };
+	enum Request { QUIT, NAME, COST, YEAR, POWER, EQUAL };
 	static constexpr unsigned SELLER_MENU_SIZE = EQUAL;
 	const char* const seller_menu[SELLER_MENU_SIZE] =
-	{ "By name","By cost","By year","By power","By car" };
+	{ "Name","Cost","Year","Power","Car" };
 private:
-	Compare compare[SORT_OPTIONS];
-	Compare find[FIND_OPTIONS];
+	const Compare compare[SORT_OPTIONS];
+	const Compare find[FIND_OPTIONS];
+private:
+	Coincidence coincidence;
 	Car car_to_find;
 	Request to_compare; 
 	Request to_find;

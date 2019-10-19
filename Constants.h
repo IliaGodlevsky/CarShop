@@ -16,7 +16,7 @@ enum
 // range constants
 enum 
 {
-	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 30,
+	MIN_SHOP_SIZE = 5, MAX_SHOP_SIZE = 500,
 	MIN_YEAR = 1991, MAX_YEAR = 2019,
 	MIN_COST = 1000, MAX_COST = 1000000,
 	MIN_POWER = 50, MAX_POWER = 300
@@ -30,7 +30,7 @@ const char* const name_msg = "Enter name: ";
 const char* const cost_msg = "Enter cost: ";
 const char* const file_msg = "Enter file name: ";
 const char* const sort_msg = "Choose sort option: ";
-const char* const find_msg = "Choose find option: ";
+const char* const find_msg = "Choose find option (0 to quit): ";
 const char* const sell_msg = "Choose car number: ";
 const char* const shop_msg = "Enter shop size: ";
 const char* const request_msg = "Choose option (0 to quit): ";
