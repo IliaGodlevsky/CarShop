@@ -140,7 +140,7 @@ void Seller::choose_find_option()
 	menu(seller_menu, FIND_OPTIONS);
 	to_find = (Request)input(find_msg, 
 		EQUAL, QUIT);
-	while (to_find)
+	while (to_find != QUIT)
 	{
 		coincidence.push_back(find[to_find - 1]);
 		find_request();
