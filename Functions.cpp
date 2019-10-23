@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <cassert>
+#include <iomanip>
 
 #include "Functions.h"
 
@@ -27,7 +27,7 @@ Plant plant()
 	const char* gen_menu[GENERATORS] 
 		= { "Random","Defined" };
 	menu(gen_menu, GENERATORS);
-	unsigned plant = input(add_msg, 
+	unsigned plant = input(gen_msg, 
 		DEFINED, RAND);
 	return generators[plant - 1];
 }
@@ -74,13 +74,16 @@ void show_car(std::ostream& os,
 	const Car& car,
 	unsigned index)
 {
-	os << "     " << index << std::endl
+	const unsigned INDENT
+		= unsigned(std::log10(index));
+	os << index << std::setw(SPACE_NUM_NAME - INDENT)
 		<< car << std::endl;
 }
 
 void show_cars(std::ostream& os,
 	const Park& cars)
 {
+	table_head(os);
 	unsigned i = 0;
 	for (auto& car : cars)
 		show_car(os, car, ++i);
@@ -90,6 +93,7 @@ bool show_cars(std::ostream&os,
 	const Park& cars,
 	const Seller& seller)
 {
+	table_head(os);
 	unsigned i = 0;
 	unsigned count = 0;
 	for (auto& car : cars)
@@ -102,6 +106,12 @@ bool show_cars(std::ostream&os,
 		}
 	}
 	return count;
+}
+
+void table_head(std::ostream& os)
+{
+	os << "#" << std::setw(SPACE_NUM_NAME) << "Name"
+		<< std::setw(SPACE_NAME_COST * 2) << "Cost\tYear\tPower\n";
 }
 
 unsigned input(const char* msg,

@@ -41,6 +41,7 @@ void show_cars(std::ostream& os,
 bool show_cars(std::ostream& os,
 	const Park& cars,
 	const Seller& seller);
+void table_head(std::ostream& os);
 
 // input functions
 unsigned input(const char* msg,

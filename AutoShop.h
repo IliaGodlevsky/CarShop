@@ -46,6 +46,7 @@ public:
 	bool operator()(const Car& car)const;
 	void choose_sort_options();
 	void choose_find_option();
+	bool nothing_chosen()const;
 private:
 	// Pointer to a METHOD
 	using Compare = bool(Seller::*)(const Car&, const Car&)const;

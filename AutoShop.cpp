@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <fstream>
 #include <valarray>
+#include <iomanip>
 
 #include "Functions.h"
 #include "Constants.h"
@@ -17,10 +18,8 @@ Car::Car(const std::string& name, unsigned year,
 
 std::ostream& operator <<(std::ostream& os, const Car& car)
 {
-	os << "Name: " << car.name << std::endl;
-	os << "Year: " << car.year << std::endl;
-	os << "Cost: " << car.cost << " $\n";
-	os << "Power: " << car.power << " hp\n";
+	os  << car.name << std::setw(SPACE_NAME_COST) 
+		<< car.cost << "\t" << car.year << "\t" << car.power;
 	return os;
 }
 
@@ -100,7 +99,8 @@ bool Seller::is_greater_power(const Car& first, const Car& second)const
 
 bool Seller::operator()(const Car& car)const
 {
-	return count_coincidence(car) >= coincidence.size();
+	return count_coincidence(car) >= coincidence.size()
+		&& coincidence.empty();
 }
 
 bool Seller::are_same(const Car& first, const Car& second)const
@@ -149,6 +149,11 @@ void Seller::choose_find_option()
 	}
 }
 
+bool Seller::nothing_chosen()const
+{
+	return coincidence.empty();
+}
+
 void Seller::find_request()
 {
 	switch (to_find)
@@ -189,7 +194,14 @@ AutoShop::AutoShop(size_t size, Plant car_gen)
 
 void AutoShop::stock()
 {
-	cars.push_back(plant()());
+	const unsigned ADD_LIMIT 
+		= MAX_SHOP_SIZE - cars.size();
+	const unsigned ADD_BOTTOM = 1;
+	unsigned to_add = input(add_msg, 
+		ADD_LIMIT, ADD_BOTTOM);
+	Plant generator = plant();
+	while(to_add--)
+		cars.push_back(generator());
 }
 
 void AutoShop::sell()
@@ -198,10 +210,21 @@ void AutoShop::sell()
 	{
 		show_cars(std::cout, cars);
 		unsigned to_sell = input(sell_msg,
-			cars.size(), 1U) - 1U;
-		cars.erase(cars.begin() + to_sell);
+			cars.size(), QUIT) - 1U;
+		while (!error(to_sell, 
+			cars.size(), QUIT))
+		{
+			cars.erase(cars.begin() + to_sell);
+			if (cars.empty())
+				break;
+			system(CMNDS - 1, cls);
+			show_cars(std::cout, cars);
+			to_sell = input(sell_msg,
+				cars.size(), 0) - 1U;
+		}
 	}
-	else std::cout << empty_msg;
+	else 
+		std::cout << empty_msg;
 }
 
 void AutoShop::take_request()
@@ -209,7 +232,8 @@ void AutoShop::take_request()
 	menu(shop_menu, SHOP_MENU_SIZE);
 	request = (Char)input(request_msg,
 		FIND, QUIT);
-	if (request > QUIT) system(cls);
+	if (unsigned(request) > QUIT)
+		system(cls);
 }
 
 void AutoShop::fulfill_request()
@@ -242,7 +266,9 @@ void AutoShop::find()const
 {
 	Seller seller;
 	seller.choose_find_option();
-	if (!show_cars(std::cout, cars, seller))
+	if (seller.nothing_chosen())
+		return;
+	else if (!show_cars(std::cout, cars, seller))
 		std::cout << not_found;
 }
 
