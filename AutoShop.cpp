@@ -100,7 +100,7 @@ bool Seller::is_greater_power(const Car& first, const Car& second)const
 bool Seller::operator()(const Car& car)const
 {
 	return count_coincidence(car) >= coincidence.size()
-		&& coincidence.empty();
+		&& !coincidence.empty();
 }
 
 bool Seller::are_same(const Car& first, const Car& second)const
