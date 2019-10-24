@@ -111,7 +111,8 @@ bool show_cars(std::ostream&os,
 void table_head(std::ostream& os)
 {
 	os << "#" << std::setw(SPACE_NUM_NAME) << "Name"
-		<< std::setw(SPACE_NAME_COST * 2) << "Cost\tYear\tPower\n";
+		<< std::setw(SPACE_NAME_COST * 2) 
+		<< "Cost\tYear\tPower\n";
 }
 
 unsigned input(const char* msg,

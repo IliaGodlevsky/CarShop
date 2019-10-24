@@ -100,7 +100,7 @@ bool Seller::is_greater_power(const Car& first, const Car& second)const
 bool Seller::operator()(const Car& car)const
 {
 	return count_coincidence(car) >= coincidence.size()
-		&& !coincidence.empty();
+		&& coincidence.size();
 }
 
 bool Seller::are_same(const Car& first, const Car& second)const
@@ -200,7 +200,7 @@ void AutoShop::stock()
 	unsigned to_add = input(add_msg, 
 		ADD_LIMIT, ADD_BOTTOM);
 	Plant generator = plant();
-	while(to_add--)
+	while (to_add-- > 0)
 		cars.push_back(generator());
 }
 
