@@ -32,6 +32,7 @@ Car& Car::input_car()
 		MAX_POWER, MIN_POWER);
 	cost = input(cost_msg, 
 		MAX_COST, MIN_COST);
+	system(cls);
 	return *this;
 }
 
